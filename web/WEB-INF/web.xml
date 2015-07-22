@@ -4,42 +4,45 @@
         <servlet-name>LoginCheckServlet</servlet-name>
         <servlet-class>com.servlet.login.LoginCheckServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CaptchaCheckServlet</servlet-name>
+        <servlet-class>com.servlet.tools.CaptchaCheckServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCheckServlet</servlet-name>
         <url-pattern>/LoginCheckServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CaptchaCheckServlet</servlet-name>
+        <url-pattern>/CaptchaCheckServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-   <servlet>
-  <servlet-name>Kaptcha</servlet-name>
-<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
-
-		<!--
+    <servlet>
+        <servlet-name>Kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+        <!--
 			For a complete list of Init Parameters, please see:
 			http://code.google.com/p/kaptcha/wiki/ConfigParameters
 		-->
-		<init-param>
-			<param-name>kaptcha.border</param-name>
-			<param-value>no</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>kaptcha.textproducer.font.color</param-name>
-			<param-value>black</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>kaptcha.textproducer.char.space</param-name>
-			<param-value>5</param-value>
-		</init-param>
-
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>Kaptcha</servlet-name>
-		<url-pattern>/Kaptcha.jpg</url-pattern>
-	</servlet-mapping>
+        <init-param>
+            <param-name>kaptcha.border</param-name>
+            <param-value>no</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.font.color</param-name>
+            <param-value>black</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.char.space</param-name>
+            <param-value>5</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Kaptcha</servlet-name>
+        <url-pattern>/Kaptcha.jpg</url-pattern>
+    </servlet-mapping>
 </web-app>
