@@ -16,6 +16,7 @@
             $(document).ready(function(){
                $("#captchaimg").click(function(){
                   this.src="/project/Kaptcha.jpg?a"+Math.random() + 10;
+                  $("#Captcha").focus();
                }); 
             });
         </script>
@@ -29,7 +30,7 @@
     <body>
         <div class="page-container">
             <h1>登录(Login)</h1>
-            <form action="../../CaptchaCheckServlet" method="post" id="form">
+            <form action="../../LoginCheckServlet" method="post" id="form">
                 <input type="text" name="username" class="username" placeholder="请输入您的用户名！">
                 <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
                 <img src="/project/Kaptcha.jpg" id="captchaimg">

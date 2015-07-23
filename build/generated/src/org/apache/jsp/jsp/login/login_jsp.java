@@ -59,6 +59,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            $(document).ready(function(){\r\n");
       out.write("               $(\"#captchaimg\").click(function(){\r\n");
       out.write("                  this.src=\"/project/Kaptcha.jpg?a\"+Math.random() + 10;\r\n");
+      out.write("                  $(\"#Captcha\").focus();\r\n");
       out.write("               }); \r\n");
       out.write("            });\r\n");
       out.write("        </script>\r\n");
@@ -72,7 +73,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\r\n");
       out.write("        <div class=\"page-container\">\r\n");
       out.write("            <h1>登录(Login)</h1>\r\n");
-      out.write("            <form action=\"../../CaptchaCheckServlet\" method=\"post\" id=\"form\">\r\n");
+      out.write("            <form action=\"../../LoginCheckServlet\" method=\"post\" id=\"form\">\r\n");
       out.write("                <input type=\"text\" name=\"username\" class=\"username\" placeholder=\"请输入您的用户名！\">\r\n");
       out.write("                <input type=\"password\" name=\"password\" class=\"password\" placeholder=\"请输入您的用户密码！\">\r\n");
       out.write("                <img src=\"/project/Kaptcha.jpg\" id=\"captchaimg\">\r\n");

@@ -32,9 +32,10 @@ public class CaptchaCheckServlet extends HttpServlet {
                 out.write("0");
             }
         } finally {            
+//            out.print("<script>alert('I'm in!);</script>");
             out.close();
         }
-//        response.setStatus(404);
+        response.setStatus(200);
     }
 
     
