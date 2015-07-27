@@ -31,7 +31,7 @@
         <div class="page-container">
             <h1>登录(Login)</h1>
             <form action="../../LoginCheckServlet" method="post" id="form">
-                <input type="text" name="username" class="username" placeholder="请输入您的用户名！">
+                <input type="text" name="username" class="username" placeholder="请输入您的学号！">
                 <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
                 <img src="/project/Kaptcha.jpg" id="captchaimg">
                 <input type="Captcha" class="Captcha" name="Captcha" id="Captcha" class="Captcha" placeholder="请输入验证码！">

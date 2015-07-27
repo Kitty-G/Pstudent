@@ -4,6 +4,7 @@
  */
 package com.servlet.login;
 
+import com.javabean.login.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -39,9 +40,12 @@ public class LoginCheckServlet extends HttpServlet {
             String captcha=request.getParameter("Captcha");
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
-                out.println("<script>alert('Bingo!')</script>");
+                login login=new login(user,pwd);
+                
+//                out.println("<script>alert('Bingo!')</script>");
+                
             }else{
-                out.println("<script>alert('Error')</script>");
+//                out.println("<script>alert('Error')</script>");
             }
         } finally {            
             out.close();

@@ -1,18 +1,24 @@
 package com.javabean.login;
-public class login {
+
+import com.dbctrl.mysql.WordCheck;
+import com.mysql.conndb.login.DBLoginQuery;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class login{
     private String usr;
     private String pwd;
-    private String captcha;
     public login(){
         usr=null;
         pwd=null;
-        captcha=null;
     }
 
-    public login(String user,String password,String captchacode){
+    public login(String user,String password){
         usr=user;
         pwd=password;
-        captcha=captchacode;
     }
     public String getUsr() {
         return usr;
@@ -20,10 +26,6 @@ public class login {
 
     public String getPwd() {
         return pwd;
-    }
-    
-    public String getCaptcha() {
-        return captcha;
     }
 
     public void setUsr(String usr) {
@@ -34,7 +36,15 @@ public class login {
         this.pwd = pwd;
     }
     
-    public void setCaptcha(String captcha) {
-        this.captcha = captcha;
+    public int loginVerify(String user,String password){
+        List list=new ArrayList();
+        list.add(user);
+        list.add(password);
+        WordCheck wc=new WordCheck(list,1); 
+        DBLoginQuery lq=new DBLoginQuery(user,password);
+        if(true){
+            
+        }
+        return 0;
     }
 }
