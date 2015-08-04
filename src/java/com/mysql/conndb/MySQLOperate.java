@@ -118,4 +118,7 @@ public class MySQLOperate extends MySQLConnector{
     public void ConnectClose() throws SQLException{
         conn.close();
     }
+    public void ResultSetClose() throws SQLException{
+        rs.close();
+    }
 }

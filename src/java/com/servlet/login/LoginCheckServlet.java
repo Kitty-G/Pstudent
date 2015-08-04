@@ -7,6 +7,9 @@ package com.servlet.login;
 import com.javabean.login.login;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +33,7 @@ public class LoginCheckServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -41,13 +44,21 @@ public class LoginCheckServlet extends HttpServlet {
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
                 login login=new login(user,pwd);
-                
-//                out.println("<script>alert('Bingo!')</script>");
-                
+                int power=login.loginVerify();
+                if(power<1){
+                    out.println("<script>alert('Error"+power+"')</script>");
+                    response.sendRedirect("/project/jsp/login/login.jsp");
+                }else{
+                    out.println("<script>alert('Bingo!"+power+"')</script>");
+                    session.setAttribute("user", user);
+                    
+                    response.sendRedirect("/project/home.jsp");
+                }
             }else{
-//                out.println("<script>alert('Error')</script>");
+                out.println("<script>alert('CaptchaError!')</script>");
             }
-        } finally {            
+            session.setAttribute("user", user);
+        } finally {     
             out.close();
         }
     }
@@ -65,7 +76,11 @@ public class LoginCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -80,7 +95,11 @@ public class LoginCheckServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

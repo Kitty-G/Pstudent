@@ -16,6 +16,15 @@
 <script type="text/jscript" src="javascript/lib/jquery-1.8.2.min.js" ></script>
 </head>
 <body>
+    <%
+        String user="abc";
+//        session.setAttribute("user", "abcd");
+        user=(String)session.getAttribute("user");
+        if(user==null){
+            user="Bingo";
+        }
+        out.print("<script>alert('"+user+"')</script>");
+    %>
 <div class="head">
 <div class="logo"></div>
 

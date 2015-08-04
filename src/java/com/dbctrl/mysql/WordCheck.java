@@ -12,21 +12,6 @@ import java.util.List;
  * @author KittyG
  */
 public class WordCheck {
-    public WordCheck(String word,int num){
-        
-    }
-    public WordCheck(List list,int num){
-        String str;
-        switch(num){
-            case 1:
-                for(Iterator i = list.iterator();i.hasNext(); ){
-                    str = (String) i.next();
-                    numcharCheck(str);
-                }
-                break;
-            default:break;
-        }
-    }
     public int numcharCheck(String str){
         char[] c=str.toCharArray();
         for(int i=0;i<c.length;i++){

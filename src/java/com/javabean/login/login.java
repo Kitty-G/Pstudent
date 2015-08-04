@@ -5,6 +5,7 @@ import com.mysql.conndb.login.DBLoginQuery;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,15 +37,26 @@ public class login{
         this.pwd = pwd;
     }
     
-    public int loginVerify(String user,String password){
-        List list=new ArrayList();
-        list.add(user);
-        list.add(password);
-        WordCheck wc=new WordCheck(list,1); 
-        DBLoginQuery lq=new DBLoginQuery(user,password);
-        if(true){
-            
+    public int loginVerify() throws SQLException{
+        WordCheck wc=new WordCheck(); 
+        DBLoginQuery lq=new DBLoginQuery(usr,pwd);
+        int power;
+        int checkResult;
+        if(wc.numcharCheck(usr)==-1){
+            checkResult=lq.Check();
+            if(checkResult>0){
+                power=checkResult;
+                lq.CloseDB();
+                return power;
+            }else if(checkResult==0){
+                return 0;                                                       //pwd error
+            }else if(checkResult==-1){
+                return -1;                                                      //usr not exist
+            }else{
+                return -99;
+            }
+        }else{
+            return -1;                                                          //usrname illegal
         }
-        return 0;
     }
 }

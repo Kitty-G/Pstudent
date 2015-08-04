@@ -26,16 +26,24 @@ public class DBLoginQuery extends MySQLOperate{
         }
     
     
-    public boolean Check() throws SQLException{
+    public int Check() throws SQLException{
         rs=super.ConditionQuery("login","stdid",usr);
-        rs.next();
-        if(rs.getString("password").equals(pwd)){
-            return true;
+        if(rs.next()){
+            if(rs.getString("password").equals(pwd)){
+                return this.getPower();
+            }else{
+                return 0;
+            }
+        }else{
+            return -1;
         }
-        return false;
     }
     
     public int getPower() throws SQLException{
         return rs.getInt("power");
+    }
+    public void CloseDB() throws SQLException{
+        rs.close();
+        super.ConnectClose();
     }
 }
