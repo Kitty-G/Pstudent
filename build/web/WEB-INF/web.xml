@@ -8,6 +8,10 @@
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <servlet-class>com.servlet.tools.CaptchaCheckServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.servlet.login.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCheckServlet</servlet-name>
         <url-pattern>/LoginCheckServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <url-pattern>/CaptchaCheckServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

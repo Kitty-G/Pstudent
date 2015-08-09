@@ -4,23 +4,18 @@
  */
 package com.servlet.login;
 
-import com.javabean.login.login;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author KittyG
  */
-public class LoginCheckServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -33,32 +28,21 @@ public class LoginCheckServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            HttpSession session = request.getSession();
-            String user=request.getParameter("stdid_log");
-            String pwd =request.getParameter("password_log");
-            String captcha=request.getParameter("Captcha_log");
-            String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-            if(code.equals(captcha)){
-                login login=new login(user,pwd);
-                int power=login.loginVerify();
-                if(power<1){
-                    out.println("<script>alert('Error"+power+"')</script>");
-                    response.sendRedirect("/project/jsp/login/login.jsp");
-                }else{
-                    out.println("<script>alert('Bingo!"+power+"')</script>");
-                    session.setAttribute("user", user);
-                    
-                    response.sendRedirect("/project/home.jsp");
-                }
-            }else{
-                out.println("<script>alert('CaptchaError!')</script>");
-            }
-            session.setAttribute("user", user);
-        } finally {     
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet RegisterServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        } finally {            
             out.close();
         }
     }
@@ -76,11 +60,7 @@ public class LoginCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -95,11 +75,7 @@ public class LoginCheckServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
