@@ -4,12 +4,17 @@
  */
 package com.servlet.login;
 
+import com.javabean.login.register;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,20 +33,37 @@ public class RegisterServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            String stdid=request.getParameter("stdid_reg");
+            String username=request.getParameter("username_reg");
+            String password=request.getParameter("password_reg");
+            String captcha=request.getParameter("Captcha_reg");
+            String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+            if(code.equals(captcha)){
+                int result;
+                register register=new register(stdid,username,password);
+                result=register.UserIDQuery();
+                out.println("<script>alert('result!')</script>");
+                if(result==0){
+                    result=register.InfoInsert();
+                    if(result==0){
+                    out.println("<script>alert('Insert!!!')</script>");
+//                        response.sendRedirect("/project/jsp/login/login.jsp");
+                    }else{
+                        out.println("<script>alert('InfoError!')</script>");
+                    }
+                }else if(result==1){
+                    out.println("<script>alert('Result1Error!')</script>");
+                }else if(result==2){
+                    out.println("<script>alert('Result2Error!')</script>");
+                }
+            }else{
+                out.println("<script>alert('CaptchaError!')</script>");
+            }
         } finally {            
             out.close();
         }
@@ -60,7 +82,11 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -75,7 +101,11 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -14,6 +14,8 @@ import java.sql.Statement;
  *
  * @author Administrator
  */
+
+// You need PreparedStatement!!!!!!! 
 public class MySQLOperate extends MySQLConnector{
      private String sql;
      private Statement statement;
@@ -74,6 +76,16 @@ public class MySQLOperate extends MySQLConnector{
         if(affected>0)return true;
         else return false;
     }
+    
+    public boolean InsertSQL(String sql) throws SQLException{
+        int affected;
+        conn=super.getConnecter();
+        statement = conn.createStatement();
+        affected=statement.executeUpdate(sql);
+        if(affected>0)return true;
+        else return false;
+    }
+    
     public boolean Update (String table,String target,String values,String columnName,String limit) throws SQLException{
         int affected;
         conn=super.getConnecter();

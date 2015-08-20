@@ -2,15 +2,11 @@ package com.javabean.login;
 
 import com.dbctrl.mysql.WordCheck;
 import com.mysql.conndb.login.DBLoginQuery;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class login{
     private String usr;
+    private String username=null;
     private String pwd;
     public login(){
         usr=null;
@@ -37,6 +33,10 @@ public class login{
         this.pwd = pwd;
     }
     
+    public String getUsername(){
+        return username;
+    }
+    
     public int loginVerify() throws SQLException{
         WordCheck wc=new WordCheck(); 
         DBLoginQuery lq=new DBLoginQuery(usr,pwd);
@@ -46,6 +46,7 @@ public class login{
             checkResult=lq.Check();
             if(checkResult>0){
                 power=checkResult;
+                username=lq.getUsername();
                 lq.CloseDB();
                 return power;
             }else if(checkResult==0){

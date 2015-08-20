@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>某某网站</title>
 <meta name="description" content="" />
@@ -17,110 +17,33 @@
 </head>
 <body>
     <%
-        String user="abc";
-//        session.setAttribute("user", "abcd");
-        user=(String)session.getAttribute("user");
-        if(user==null){
-            user="Bingo";
+        String stdid;
+        String user;
+        String power;
+        stdid=(String)session.getAttribute("stdid");
+        user=(String)session.getAttribute("username");
+        power=(String)session.getAttribute("power");
+        if(power==null){
+            user="游客";
         }
-        out.print("<script>alert('"+user+"')</script>");
     %>
 <div class="head">
-<div class="logo"></div>
-
-<!--nav start-->
-    <div class="nav">
-		<ul class="menu">
+<div class="nav1">
+    <ul class="menu">
         <li><a href="index.jsp"><span>网站首页</span></a></li>
-
-
-
-<li><a href='/demo/2/about/' ><span>关于我们</span></a></li>
-
-
-<li><a href='/demo/2/case/' ><span>案例展示</span></a></li>
-
-
-<li><a href='/demo/2/demo/2/services/'  rel='dropmenu3'><span>服务范围</span></a></li>
-
-
-<li><a href='/demo/2/demo/2/news/'  rel='dropmenu4'><span>新闻中心</span></a></li>
-
-
-<li><a href='/Project/jsp/login.jsp' ><span>用户登录</span></a></li>
-
-
-	</ul>
-	</div>
-<!--nav end-->
-
+        <li><a href='/demo/2/about/' ><span>通知公告</span></a></li>
+        <li><a href='/demo/2/case/' ><span>爱心论坛</span></a></li>
+        <li><a href='/demo/2/demo/2/services/'><span>自强互助</span></a></li>
+    </ul>
 </div>
-<div class="show">
-
-<!--banner start-->
-<div class="lunhuan">
-    <div class="lunhuanback">
-        <p style="opacity: 1;filter:alpha(opacity=100);"></p>
-        <p></p>
-    </div>
-    <div class="lunhuan_main">
-        <div class="lunhuancenter">
-            <a href="javascript:void(0)" class="centergif"></a>
-            <b class="slideUp" style="background-image:url(/demo/2/templets/html5/images/lunhuan.png); background-repeat:no-repeat;opacity:1;filter:alpha(opacity=100); top:-10px;"></b>
-            <b class="slideUp" style="background-image:url(/demo/2/templets/html5/images/lunhuan2.png); background-repeat:no-repeat;"></b>
-            <ul class="lunbonum">
-                <li class="lunboone"></li>
-                <li></li>
-            </ul>
-        </div>
-    </div>
+<div class="nav2">
+    <ul class="menu">
+        <li><a><span>你好,<%=user%></span></a></li>
+        <li><a href='/project/jsp/login/login.jsp' ><span>用户登录</span></a></li>
+    </ul>
 </div>
-<div style="text-align:center;clear:both">
 </div>
-<!--banner end-->
-
-<!--banner js start-->
-<script type="text/javascript">
-$(document).ready(function(){
-    var ali=$('.lunbonum li');
-    var aPage=$('.lunhuanback p');
-    var aslide_img=$('.lunhuancenter b');
-    var iNow=0;
-    ali.each(function(index){
-        $(this).mouseover(function(){
-            slide(index);
-        })
-    });
-    function slide(index){
-        iNow=index;
-        ali.eq(index).addClass('lunboone').siblings().removeClass();
-		aPage.eq(index).siblings().stop().animate({opacity:0},600);
-		aPage.eq(index).stop().animate({opacity:1},600);
-        aslide_img.eq(index).stop().animate({opacity:1,top:-10},600).siblings('b').stop().animate({opacity:0,top:-40},600);
-    }
-	function autoRun(){
-        iNow++;
-		if(iNow==ali.length){
-			iNow=0;
-		}
-		slide(iNow);
-	}
-	var timer=setInterval(autoRun,4000);
-    ali.hover(function(){
-		clearInterval(timer);
-	},function(){
-		timer=setInterval(autoRun,4000);
-    });
-})
-</script>
-<!--banner js end-->
-
-
-</div>
-
 <div class="fuwu">
-
-
 <div class="con">
 <p class="img"><img src="resources/images/index/c1.png" /></p>
 <p class="title"><a href="#">互联网服务介绍</a></p>

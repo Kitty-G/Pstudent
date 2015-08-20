@@ -4,7 +4,6 @@
  */
 package com.mysql.conndb.login;
 
-import com.dbctrl.mysql.WordCheck;
 import com.mysql.conndb.MySQLOperate;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,6 +38,9 @@ public class DBLoginQuery extends MySQLOperate{
         }
     }
     
+    public String getUsername() throws SQLException{
+        return rs.getString("username");
+    }
     public int getPower() throws SQLException{
         return rs.getInt("power");
     }

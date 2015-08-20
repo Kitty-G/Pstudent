@@ -49,15 +49,17 @@ public class LoginCheckServlet extends HttpServlet {
                     out.println("<script>alert('Error"+power+"')</script>");
                     response.sendRedirect("/project/jsp/login/login.jsp");
                 }else{
-                    out.println("<script>alert('Bingo!"+power+"')</script>");
-                    session.setAttribute("user", user);
+//                    out.println("<script>alert('Bingo!"+power+"')</script>");
                     
+                    session.setAttribute("stdid", user);
+                    session.setAttribute("username",login.getUsername());
+                    session.setAttribute("power",String.valueOf(power));
                     response.sendRedirect("/project/home.jsp");
                 }
             }else{
                 out.println("<script>alert('CaptchaError!')</script>");
             }
-            session.setAttribute("user", user);
+            session.setAttribute("stdid", user);
         } finally {     
             out.close();
         }

@@ -13,22 +13,18 @@ body{background:url(../images/bg.png) repeat-x fixed #627697;}
 .head{width:1228px; height:100px; border-top:#252728 4px solid; background:#fff; margin:0 auto;}
 .head .logo{width:153px; height:31px; background:url(../images/logo.png); margin:35px 0 0 20px; float:left;}
 /* nav */
-.nav{height:100px; float:right; margin-right:20px;}
-.nav .menu{	position:relative; font-size:16px;height:100px; }
-.nav .menu li{display:block; float:left; height:100px; overflow:hidden;}
-.nav .menu li a{display:block; color:#697b83; line-height:98px; padding:0 25px 0 25px; }
-.nav .menu li a:hover{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
-.nav .menu li a.dianji{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
-/* banner */
-.lunhuan{width:100%;height:530px; position:relative;}
-.lunhuan .lunhuanback{width:100%;height:530px;position:absolute;left:0px;top:0px;overflow:hidden;}
-.lunhuan .lunhuanback p{width:100%;height:530px;position:absolute;left:0px;top:0px;opacity:0;filter:alpha(opacity=0);}
-.lunhuan .lunhuan_main{width:100%;height:530px;position:relative;}
-.lunhuancenter{width:100%;height:530px;position:absolute;left:0px; overflow:hidden;}
-.lunhuancenter b{position:absolute;left:0px;top:0px;opacity:0;filter:alpha(opacity=0);z-index:3;width:1228px;height:530px;display:block;}
-.lunbonum{height:14px;line-height:23px;position:absolute;left:590px;top:500px;z-index:5;}
-.lunbonum li{width:14px;height:14px; margin:5px;background:#fff;border-radius:14px;cursor:pointer; float:left;}
-.lunbonum .lunboone{background:#3c98b7;cursor:pointer;}
+.nav1{height:100px; float:left; margin-right:20px;}
+.nav1 .menu{	position:relative; font-size:16px;height:100px; }
+.nav1 .menu li{display:block; float:left; height:100px; overflow:hidden;}
+.nav1 .menu li a{display:block; color:#697b83; line-height:98px; padding:0 25px 0 25px; }
+.nav1 .menu li a:hover{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
+.nav1 .menu li a.dianji{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
+.nav2{height:100px; float:right; margin-right:20px;}
+.nav2 .menu{	position:relative; font-size:16px;height:100px; }
+.nav2 .menu li{display:block; float:left; height:100px; overflow:hidden;}
+.nav2 .menu li a{display:block; color:#697b83; line-height:98px; padding:0 25px 0 25px; }
+.nav2 .menu li a:hover{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
+.nav2 .menu li a.dianji{background:#f7f7f7; color:#208baf; border-bottom:2px solid #3c98b7;}
 .show{width:1228px; height:530px; background:url(../images/bg1.png); margin:0 auto;}
 .fuwu{width:1228px; height:300px; background:#fff; margin:0 auto;}
 .fuwu .con{width:267px; background:#fff; float:left; margin:40px 20px 0 20px;}

@@ -1,51 +1,113 @@
-﻿
-<html>
+<%-- 
+    Document   : login
+    Created on : 2015-8-14, 23:03:18
+    Author     : KittyG
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html  class="no-js">
+<html>
     <head>
-        <meta charset="utf-8">
-        <title>登录(Login)</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="stylesheet" href="../../css/login/reset.css">
-        <link rel="stylesheet" href="../../css/login/supersized.css">
-        <link rel="stylesheet" href="../../css/login/style.css">
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>贫困生助学平台</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Login and Registration Form with HTML5 and CSS3" />
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="../../css/login/demo.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/login/style_1.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/login/animate-custom.css" />
         <script type="text/javascript" src="../../javascript/lib/jquery-1.8.2.min.js"></script>
-        <script>
+        <script type="text/javascript">
             $(document).ready(function(){
-               $("#captchaimg").click(function(){
+               $("#captchaimg_log").click(function(){
                   this.src="/project/Kaptcha.jpg?a"+Math.random() + 10;
-                  $("#Captcha").focus();
+               }); 
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+               $("#captchaimg_reg").click(function(){
+                  this.src="/project/Kaptcha.jpg?a"+Math.random() + 10;
                }); 
             });
         </script>
         <script>
-//            $(docunment).ready(function(){
-//
-//
-//            });
+            $(document).ready(function(){
+                $("#submit_log").click(function(){
+                   var stdid=$("#stdid_log").val();
+                   var pwd=$("#password_log").val();
+                   if(stdid===""){
+                       alert("请输入学号!");
+                       return false;
+                   }
+                   if(pwd===""){
+                       alert("请输入密码!");
+                       return false;
+                   }
+                    $.post(
+                        "../../CaptchaCheckServlet",
+                        {captcha:$('#Captcha_log').val()},
+                        function(result){
+                            if(result!=="1"){                               //form submit
+                                alert("验证码错误！");
+                                $("#captchaimg_log").attr('src','/project/Kaptcha.jpg?a'+Math.random() + 10);
+                                $("#password_log").attr('value','');
+                                $("#Captcha_log").attr('value','');
+                                return false;
+                            }else if(result==='1'){
+                                $("#form_log").submit();
+                            }
+                        }
+                        );
+               return false;                    
+                });
+            });
         </script>
     </head>
     <body>
-        <div class="page-container">
-            <h1>登录(Login)</h1>
-            <form action="../../LoginCheckServlet" method="post" id="form">
-                <input type="text" name="username" class="username" placeholder="请输入您的学号！">
-                <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
-                <img src="/project/Kaptcha.jpg" id="captchaimg">
-                <div>
-                <input type="Captcha" class="Captcha" name="Captcha" id="Captcha" class="Captcha" placeholder="请输入验证码！">
-                <button class="submit_button" url="../register/register.jsp">注册</button>
-                </div>
-                <button type="submit" class="submit_button" id="submit">登录</button>
-            </form>
-        </div>
-        <script src="../../javascript/login/supersized.3.2.7.min.js" ></script>
-        <script src="../../javascript/login/supersized-init.js" ></script>
-        <script src="../../javascript/login/scripts.js" ></script>
+        <div class="container">			
+                <div id="container_demo" >
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form action="../../LoginCheckServlet" method="post" id="form_log"> 
+                                <h1>学生 登录</h1> 
+                                <p> 
+                                    <label for="stdid_log" > 学号 </label>
+                                    <input id="stdid_log" name="stdid_log" type="text" placeholder="请输入学号"/>
+                                </p>
+                                <p> 
+                                    <label for="password_log" > 密码 </label>
+                                    <input id="password_log" name="password_log" type="password" placeholder="请输入密码" /> 
+                                </p>
+                                
+                                <p>
+                                    <label for="Captcha_log">验证码:</label>
+                                    <img src="/project/Kaptcha.jpg" id="captchaimg_log">
+                                    <input type="text" name="Captcha_log" id="Captcha_log" placeholder="请输入验证码！">
+                                </p>
+                                <p class="login button"> 
+                                    <input type="submit" value="Login" id="submit_log"/> 
+								</p>
+                           </form>
+                                <p class="change_link">
+									没有帐号？
+									<a href="../register/register.jsp">注册</a>
+								</p>
+                            
+                        </div>
 
-    </body>
+                        
+						
+                    </div>
+                </div>  
+        </div>
+
+  
+	</body>
 
 </html>
-
