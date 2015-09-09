@@ -1,0 +1,39 @@
+create user 'reader'@'%' identified by 'aptx4869';
+GRANT select ON p_student.* TO 'reader'@'%'; 
+create user 'writer'@'%' identified by 'aptx4869';
+GRANT insert ON p_student.* TO 'writer'@'%';
+create user 'updater'@'%' identified by 'aptx4869';
+GRANT update ON p_student.* TO 'updater'@'%'; 
+
+create table login(
+stdid		varchar(10)	primary key,
+username	varchar(20)	not null,
+password	varchar(50)	not null,
+power		int		not null
+)
+
+create table d_info(
+stdid		varchar(10)	not null,
+realname	varchar(20)	,
+sex		int		,
+idno		varchar(18)	,
+major		varchar(5)	,
+class		varchar(5)	,
+tel		varchar(15)	,
+email		varchar(40)	,
+addr		varchar(50)	,
+login_time	date		,
+foreign key(stdid) references login(stdid) on delete cascade on update cascade
+);
+
+create table p_info(
+stdid		varchar(10)	not null,
+dorm_num	varchar(6)	,
+city		varchar(5)	,
+p_level		int		,
+p_reason	varchar(50)	,
+speciality	varchar(50)	,
+pt_job		int		,
+prize		varchar(100)	,
+foreign key(stdid) references login(stdid) on delete cascade on update cascade
+);

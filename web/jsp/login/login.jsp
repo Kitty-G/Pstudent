@@ -27,13 +27,6 @@
                }); 
             });
         </script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-               $("#captchaimg_reg").click(function(){
-                  this.src="/project/Kaptcha.jpg?a"+Math.random() + 10;
-               }); 
-            });
-        </script>
         <script>
             $(document).ready(function(){
                 $("#submit_log").click(function(){

@@ -19,12 +19,17 @@
     <%
         String stdid;
         String user;
-        String power;
+        Integer power;
+        String login_href;
+        String login_text;
         stdid=(String)session.getAttribute("stdid");
         user=(String)session.getAttribute("username");
-        power=(String)session.getAttribute("power");
+        power=(Integer)session.getAttribute("power");
         if(power==null){
             user="游客";
+        }
+        if(user.length()>10){
+            user=user.substring(0,10)+"...";
         }
     %>
 <div class="head">
@@ -38,8 +43,17 @@
 </div>
 <div class="nav2">
     <ul class="menu">
-        <li><a><span>你好,<%=user%></span></a></li>
-        <li><a href='/project/jsp/login/login.jsp' ><span>用户登录</span></a></li>
+        <li><a href="/project/jsp/std_info/detail.jsp"><span>你好,<%=user%></span></a></li>
+        <%
+            if(power==null || power.intValue()<=0){
+                login_href="/project/jsp/login/login.jsp";
+                login_text="用户登录";
+            }else{
+                login_href="/project/ExitLoginServlet";
+                login_text="退出登录";
+            }
+        %>
+        <li><a href='<%=login_href%>' ><span><%=login_text%></span></a></li>
     </ul>
 </div>
 </div>

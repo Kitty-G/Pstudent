@@ -35,6 +35,7 @@ public class RegisterServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         try {
             HttpSession session = request.getSession();
@@ -51,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
                 if(result==0){
                     result=register.InfoInsert();
                     if(result==0){
-                    out.println("<script>alert('Insert!!!')</script>");
+                    out.println("<script>alert('Insert!!!"+username+"')</script>");
 //                        response.sendRedirect("/project/jsp/login/login.jsp");
                     }else{
                         out.println("<script>alert('InfoError!')</script>");

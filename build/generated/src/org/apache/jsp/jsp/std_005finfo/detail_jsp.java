@@ -1,0 +1,294 @@
+package org.apache.jsp.jsp.std_005finfo;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+
+public final class detail_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+
+    String stdid=(String)session.getAttribute("stdid");
+
+      out.write("\n");
+      out.write("<head>\n");
+      out.write("<meta charset=\"UTF-8\" />\n");
+      out.write("<title>完善信息</title>\n");
+      out.write("<script src=\"../../javascript/register/html5shiv.js\"></script>\n");
+      out.write("\n");
+      out.write("<link href=\"../../css/register/normalize.css\" rel=\"stylesheet\"/>\n");
+      out.write("<link href=\"../../css/register/jquery-ui.css\" rel=\"stylesheet\"/>\n");
+      out.write("<link href=\"../../css/register/jquery.idealforms.min.css\" rel=\"stylesheet\" media=\"screen\"/>\n");
+      out.write("\n");
+      out.write("<style type=\"text/css\">\n");
+      out.write("body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;background:url(pattern.png);overflow-y:scroll;padding:60px 0 0 0;}\n");
+      out.write("#my-form{width:755px;margin:0 auto;border:1px solid #ccc;padding:3em;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.2);}\n");
+      out.write("#comments{width:350px;height:100px;}\n");
+      out.write("</style>\n");
+      out.write("\n");
+      out.write("</head>\n");
+      out.write("<body>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<div class=\"row\">\n");
+      out.write("\n");
+      out.write("    <div class=\"eightcol last\">\n");
+      out.write("\n");
+      out.write("    <!-- Begin Form -->\n");
+      out.write("\n");
+      out.write("    <form id=\"my-form\" action=\"/project/DetailInfoServlet\" method=\"post\">\n");
+      out.write("        <div><label>学号:");
+      out.print(stdid);
+      out.write("</label></div>\n");
+      out.write("        <div><label>真实姓名;</label><input id=\"rname\" name=\"rname\" type=\"text\"></div>\n");
+      out.write("        <div>\n");
+      out.write("            <label>性别</label>\n");
+      out.write("            <select id=\"sex\" name=\"sex\">\n");
+      out.write("            <option value =\"2\">请选择</option>\n");
+      out.write("            <option value =\"1\">男</option>\n");
+      out.write("            <option value=\"0\">女</option>\n");
+      out.write("            </select>\n");
+      out.write("        </div>\n");
+      out.write("        <div><label>身份证号:</label><input id=\"id\" name=\"id\" type=\"text\"/></div>\n");
+      out.write("        <div><label>学院:</label>\n");
+      out.write("        <select name=\"dept\" id=\"dept\">\n");
+      out.write("\t<option value=\"-1\">请选择</option>\n");
+      out.write("        <option value=\"01\">轻工与化学工程学院</option>\n");
+      out.write("        <option value=\"02\">生物工程学院</option>\n");
+      out.write("        <option value=\"03\">纺织与材料工程学院</option>\n");
+      out.write("        <option value=\"04\">机械工程与自动化学院</option>\n");
+      out.write("        <option value=\"05\">信息科学与工程学院</option>\n");
+      out.write("        <option value=\"06\">艺术设计学院</option>\n");
+      out.write("        <option value=\"07\">管理学院</option>\n");
+      out.write("        <option value=\"08\">外国语学院</option>\n");
+      out.write("        <option value=\"09\">体育部</option>\n");
+      out.write("        <option value=\"10\">现代教育技术部</option>\n");
+      out.write("        <option value=\"11\">研究生部</option>\n");
+      out.write("        <option value=\"12\">医务所</option>\n");
+      out.write("        <option value=\"13\">保卫处</option>\n");
+      out.write("        <option value=\"99\">其他</option>\n");
+      out.write("        <option value=\"14\">因材施教班</option>\n");
+      out.write("        <option value=\"98\">外聘</option>\n");
+      out.write("        <option value=\"15\">教务处</option>\n");
+      out.write("        <option value=\"16\">学生处</option>\n");
+      out.write("        <option value=\"18\">校领导</option>\n");
+      out.write("        <option value=\"19\">机关单位</option>\n");
+      out.write("        <option value=\"20\">服装学院</option>\n");
+      out.write("        <option value=\"22\">爱丁堡国际航空服务学院</option>\n");
+      out.write("        <option value=\"23\">国际教育学院</option>\n");
+      out.write("        <option value=\"24\">思政部</option>\n");
+      out.write("        <option value=\"17\">食品学院</option>\n");
+      out.write("        <option value=\"25\">教辅人员</option>\n");
+      out.write("        </select>\n");
+      out.write("        </div>\n");
+      out.write("        <div><label>专业:</label>\n");
+      out.write("        <select name=\"major\" id=\"major\">\n");
+      out.write("          <option value=\"-1\">请选择</option>\n");
+      out.write("          <option value=\"0101\">轻化工程</option>\n");
+      out.write("        <option value=\"0102\">应用化学</option>\n");
+      out.write("        <option value=\"0103\">化学工程与工艺</option>\n");
+      out.write("        <option value=\"0104\">环境工程</option>\n");
+      out.write("        <option value=\"0305\">材料科学与工程(高分子材料方向)</option>\n");
+      out.write("        <option value=\"0306\">材料科学与工程(无机非金属材料方向)</option>\n");
+      out.write("        <option value=\"0107\">材料科学与工程(电子信息材料方向)</option>\n");
+      out.write("        <option value=\"0201\">生物工程</option>\n");
+      out.write("        <option value=\"0202\">生物技术</option>\n");
+      out.write("        <option value=\"1701\">食品科学与工程</option>\n");
+      out.write("        <option value=\"1702\">食品质量与安全</option>\n");
+      out.write("        <option value=\"0301\">纺织工程</option>\n");
+      out.write("        <option value=\"0109\">印刷工程</option>\n");
+      out.write("        <option value=\"0110\">包装工程</option>\n");
+      out.write("        <option value=\"0401\">机械工程及自动化</option>\n");
+      out.write("        <option value=\"0402\">工业工程</option>\n");
+      out.write("        <option value=\"0403\">机械工程及自动化(中职升本)</option>\n");
+      out.write("        <option value=\"0501\">计算机科学与技术</option>\n");
+      out.write("        <option value=\"0502\">信息工程类</option>\n");
+      out.write("        <option value=\"0503\">信息与计算科学</option>\n");
+      out.write("        <option value=\"0504\">网络工程</option>\n");
+      out.write("        <option value=\"0701\">工商管理</option>\n");
+      out.write("        <option value=\"0702\">信息管理与信息系统</option>\n");
+      out.write("        <option value=\"0703\">国际经济与贸易</option>\n");
+      out.write("        <option value=\"0704\">人力资源管理</option>\n");
+      out.write("        <option value=\"0801\">英语</option>\n");
+      out.write("        <option value=\"0707\">国际经济与贸易（英语强化）</option>\n");
+      out.write("        <option value=\"0601\">艺术设计（视觉传达设计方向）</option>\n");
+      out.write("        <option value=\"0602\">艺术设计（环境艺术设计方向）</option>\n");
+      out.write("        <option value=\"0603\">艺术设计（设计管理方向）</option>\n");
+      out.write("        <option value=\"0604\">艺术设计（数字媒体艺术方向）</option>\n");
+      out.write("        <option value=\"2301\">艺术设计（中外合作办学）</option>\n");
+      out.write("        <option value=\"2302\">服装设计与工程（中外合作办学）</option>\n");
+      out.write("        <option value=\"0811\">日语（商务日语方向）</option>\n");
+      out.write("        <option value=\"0608\">服装设计与工程(工科)</option>\n");
+      out.write("        <option value=\"0609\">工业设计</option>\n");
+      out.write("        <option value=\"0304\">纺织工程（服装工程方向）</option>\n");
+      out.write("        <option value=\"0611\">雕塑</option>\n");
+      out.write("        <option value=\"0612\">艺术设计(专升本)</option>\n");
+      out.write("        <option value=\"0505\">电子信息工程</option>\n");
+      out.write("        <option value=\"0506\">自动化</option>\n");
+      out.write("        <option value=\"0507\">通信工程</option>\n");
+      out.write("        <option value=\"0613\">艺术设计</option>\n");
+      out.write("        <option value=\"0614\">服装设计与工程（中职升本）</option>\n");
+      out.write("        <option value=\"0803\">服装设计与工程（艺术类-亚太）</option>\n");
+      out.write("        <option value=\"0804\">计算机科学与技术（亚太）</option>\n");
+      out.write("        <option value=\"0805\">工商管理（亚太）</option>\n");
+      out.write("        <option value=\"0307\">材料化学</option>\n");
+      out.write("        <option value=\"0705\">工商管理（英语强化）</option>\n");
+      out.write("        <option value=\"1401\">教改班</option>\n");
+      out.write("        <option value=\"9801\">外聘</option>\n");
+      out.write("        <option value=\"0615\">数字媒体艺术</option>\n");
+      out.write("        <option value=\"0706\">物流管理</option>\n");
+      out.write("        <option value=\"0806\">英语（日语方向）</option>\n");
+      out.write("        <option value=\"0404\">机械工程及自动化（模具设计与制造方向）</option>\n");
+      out.write("        <option value=\"0807\">日语</option>\n");
+      out.write("        <option value=\"0616\">艺术设计（景观设计方向）</option>\n");
+      out.write("        <option value=\"1703\">食品科学与工程（公共营养方向）</option>\n");
+      out.write("        <option value=\"0802\">国际经济与贸易(英语强化）</option>\n");
+      out.write("        <option value=\"0405\">机械电子工程</option>\n");
+      out.write("        <option value=\"2001\">艺术设计（饰品设计）</option>\n");
+      out.write("        <option value=\"1402\">英语分级</option>\n");
+      out.write("        <option value=\"2303\">中外合作英语分级</option>\n");
+      out.write("        <option value=\"0509\">光源与照明</option>\n");
+      out.write("        <option value=\"0619\">艺术设计（建筑空间设计方向)</option>\n");
+      out.write("        <option value=\"0620\">数字媒体艺术（数字传播设计方向）</option>\n");
+      out.write("        <option value=\"0621\">艺术设计（视觉传达设计方向）(中职升本)</option>\n");
+      out.write("        <option value=\"0622\">艺术设计（环境艺术设计方向）(中职升本)</option>\n");
+      out.write("        <option value=\"0711\">工商管理（中职升本）</option>\n");
+      out.write("        <option value=\"1403\">信息创新实验班</option>\n");
+      out.write("        <option value=\"0812\">汉语国际教育</option>\n");
+      out.write("        <option value=\"0408\">机械工程</option>\n");
+      out.write("        <option value=\"2201\">空乘</option>\n");
+      out.write("        <option value=\"0617\">美术学</option>\n");
+      out.write("        <option value=\"0708\">电子商务</option>\n");
+      out.write("        <option value=\"0808\">对外汉语</option>\n");
+      out.write("        <option value=\"0809\">英语（商务）</option>\n");
+      out.write("        <option value=\"2202\">空中保安</option>\n");
+      out.write("        <option value=\"1704\">食品质量与安全（2+2）</option>\n");
+      out.write("        <option value=\"0618\">艺术设计（视觉传达设计2+2）</option>\n");
+      out.write("        <option value=\"0709\">国际经济与贸易（2+2）</option>\n");
+      out.write("        <option value=\"2002\">服装设计与工程（服装设计2+2）</option>\n");
+      out.write("        <option value=\"0508\">计算机科学与技术（2+2）</option>\n");
+      out.write("        <option value=\"0810\">英语(商务方向2+2)</option>\n");
+      out.write("        <option value=\"0406\">材料成型及控制工程</option>\n");
+      out.write("        <option value=\"2003\">服装设计与工程(服装设计方向)</option>\n");
+      out.write("        <option value=\"2004\">服装设计与工程(形象设计方向)</option>\n");
+      out.write("        <option value=\"2005\">服装设计与工程(服装设计与表演方向)</option>\n");
+      out.write("        <option value=\"2006\">服装设计与工程</option>\n");
+      out.write("        <option value=\"2007\">摄影</option>\n");
+      out.write("        <option value=\"0710\">国际经济与贸易（英语强化2+2）</option>\n");
+      out.write("        <option value=\"0623\">艺术设计（中职升本）</option>\n");
+      out.write("        <option value=\"1705\">食品科学与工程（创新班）</option>\n");
+      out.write("        <option value=\"0407\">机械工程及自动化（创新班）</option>\n");
+      out.write("        <option value=\"0308\">无机非金属材料工程</option>\n");
+      out.write("        <option value=\"0309\">高分子材料与工程</option>\n");
+      out.write("        <option value=\"0624\">视觉传达设计</option>\n");
+      out.write("        <option value=\"0625\">环境设计</option>\n");
+      out.write("        <option value=\"0626\">产品设计</option>\n");
+      out.write("        <option value=\"2008\">服装与服饰设计</option>\n");
+      out.write("        <option value=\"0627\">视觉传达设计（2+2）</option>\n");
+      out.write("        <option value=\"0813\">英语（2+2）</option>\n");
+      out.write("        <option value=\"0628\">文化产业管理</option>\n");
+      out.write("        <option value=\"0629\">风景园林</option>\n");
+      out.write("        <option value=\"0630\">艺术与科技</option>\n");
+      out.write("        <option value=\"1706\">海洋资源开发技术</option>\n");
+      out.write("        <option value=\"0203\">生物技术（中职升本）</option>\n");
+      out.write("        <option value=\"0409\">机械工程（中职升本）</option>\n");
+      out.write("        <option value=\"0510\">自动化（中职升本）</option>\n");
+      out.write("        <option value=\"0631\">产品设计（中职升本）</option>\n");
+      out.write("        <option value=\"0632\">环境设计（专升本）</option>\n");
+      out.write("        <option value=\"0633\">数字媒体艺术（专升本）</option>\n");
+      out.write("        <option value=\"0634\">视觉传达设计（专升本）</option>\n");
+      out.write("        <option value=\"0635\">产品设计（专升本）</option>\n");
+      out.write("        <option value=\"2009\">服装与服饰设计（2+2）</option>\n");
+      out.write("        <option value=\"2304\">视觉传达设计（中外合作办学）</option>\n");
+      out.write("        <option value=\"1707\">食品科学与工程（2+2）</option>\n");
+      out.write("        <option value=\"0410\">机械工程（创新班）</option>\n");
+      out.write("        <option value=\"2010\">表演</option>\n");
+      out.write("        <option value=\"0204\">葡萄与葡萄酒工程</option>\n");
+      out.write("        <option value=\"0636\">工艺美术</option>\n");
+      out.write("        <option value=\"0111\">轻化类因材施教班</option>\n");
+      out.write("        <option value=\"2305\">服装与服饰设计（中外合作办学）</option>\n");
+      out.write("        <option value=\"0205\">生物类因材施教班</option>\n");
+      out.write("        <option value=\"0310\">纺织类因材施教班</option>\n");
+      out.write("        <option value=\"0311\">材料类因材施教班</option>\n");
+      out.write("        <option value=\"0411\">机械类因材施教班</option>\n");
+      out.write("        </select>\n");
+      out.write("\n");
+      out.write("        </div>\n");
+      out.write("        <div><label>年级:</label><input id=\"grade\" name=\"grade\" type=\"text\"/></div>\n");
+      out.write("        <div><label>班级:</label><input id=\"class\" name=\"class\" type=\"text\"/></div>\n");
+      out.write("        <div><label>电话:</label><input id=\"tel\" name=\"tel\" type=\"text\"/></div>\n");
+      out.write("        <div><label>邮箱:</label><input id=\"email1\" name=\"email1\" type=\"text\"/><label>@</label><input id=\"email2\" name=\"email2\" type=\"text\"/></div>\n");
+      out.write("        <div><label>家庭住址:</label><input id=\"addr\" name=\"addr\" type=\"text\"/></div>\n");
+      out.write("      <div><hr/></div>\n");
+      out.write("\n");
+      out.write("      <div>\n");
+      out.write("        <button type=\"submit\">提交</button>\n");
+      out.write("        <button id=\"reset\" type=\"button\">重置</button>\n");
+      out.write("      </div>\n");
+      out.write("\n");
+      out.write("    </form>\n");
+      out.write("\n");
+      out.write("    <!-- End Form -->\n");
+      out.write("\n");
+      out.write("  </div>\n");
+      out.write("\n");
+      out.write("</div>\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<script type=\"text/javascript\" src=\"../../javascript/lib/jquery-1.8.2.min.js\"></script>\n");
+      out.write("<script type=\"text/javascript\" src=\"../../javascript/lib/jquery-ui.min.js\"></script>\n");
+      out.write("<script type=\"text/javascript\" src=\"../../javascript/register/jquery.idealforms.js\"></script>\n");
+      out.write("\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}

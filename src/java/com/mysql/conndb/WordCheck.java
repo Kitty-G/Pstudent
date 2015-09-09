@@ -2,7 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dbctrl.mysql;
+package com.mysql.conndb;
+
 
 
 /**
@@ -31,5 +32,16 @@ public class WordCheck {
             }
         }
         return -1;
+    }
+    public boolean stdidCheck(String stdid){
+        char []id=stdid.toCharArray();
+        for(int i=0;i<id.length;i++){
+            if(48<=id[i] && id[i]<=57){
+                continue;
+            }else{
+                return false;
+            }
+        }
+        return  true;
     }
 }

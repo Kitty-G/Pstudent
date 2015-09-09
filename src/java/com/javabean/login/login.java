@@ -1,6 +1,6 @@
 package com.javabean.login;
 
-import com.dbctrl.mysql.WordCheck;
+import com.mysql.conndb.WordCheck;
 import com.mysql.conndb.login.DBLoginQuery;
 import java.sql.SQLException;
 

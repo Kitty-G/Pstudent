@@ -11,7 +11,6 @@ table {border-collapse: collapse;	border-spacing: 0;}
 img{display:block;}
 body{background:url(../images/bg.png) repeat-x fixed #627697;}
 .head{width:1228px; height:100px; border-top:#252728 4px solid; background:#fff; margin:0 auto;}
-.head .logo{width:153px; height:31px; background:url(../images/logo.png); margin:35px 0 0 20px; float:left;}
 /* nav */
 .nav1{height:100px; float:left; margin-right:20px;}
 .nav1 .menu{	position:relative; font-size:16px;height:100px; }

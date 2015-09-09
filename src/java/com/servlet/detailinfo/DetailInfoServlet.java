@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.login;
+package com.servlet.detailinfo;
 
-import com.javabean.login.login;
+import com.javabean.std_info.d_info;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KittyG
  */
-public class LoginCheckServlet extends HttpServlet {
+public class DetailInfoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -37,30 +37,27 @@ public class LoginCheckServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            HttpSession session = request.getSession();
-            String user=request.getParameter("stdid_log");
-            String pwd =request.getParameter("password_log");
-            String captcha=request.getParameter("Captcha_log");
-            String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
-            if(code.equals(captcha)){
-                login login=new login(user,pwd);
-                int power=login.loginVerify();
-                if(power<1){
-                    out.println("<script>alert('Error"+power+"')</script>");
-                    response.sendRedirect("/project/jsp/login/login.jsp");
-                }else{
-//                    out.println("<script>alert('Bingo!"+power+"')</script>");
-                    
-                    session.setAttribute("stdid", user);
-                    session.setAttribute("username",login.getUsername());
-                    session.setAttribute("power",power);
-                    response.sendRedirect("/project/home.jsp");
-                }
-            }else{
-                out.println("<script>alert('CaptchaError!')</script>");
-            }
-            session.setAttribute("stdid", user);
-        } finally {     
+                HttpSession session = request.getSession();
+                String stdid=(String)session.getAttribute("stdid");
+                String rname=request.getParameter("rname");
+                int sex=Integer.parseInt(request.getParameter("sex"));
+                String id=request.getParameter("id");
+                String major=request.getParameter("major");
+                String grade=request.getParameter("grade");
+                String class_no=request.getParameter("class");
+                String tel=request.getParameter("tel");
+                String email1=request.getParameter("email1");
+                String email2=request.getParameter("email2");
+                String addr=request.getParameter("addr");
+                int result;
+                String output=rname+" "+sex+" "+id+" "+major+" "+grade+" "+class_no+" "+tel+" "+email1+"@"+email2+" "+addr;
+//                out.println("<script>alert('"+output+"');</script>");
+                
+                System.out.println(output);
+//                d_info d_info=new d_info(stdid,rname,sex,id,major,grade,class_no,tel,email1+"@"+email2,addr);
+//                result=d_info.dataUpdate();
+//                System.out.println("result is "+result);
+        } finally {            
             out.close();
         }
     }
@@ -81,7 +78,7 @@ public class LoginCheckServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetailInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +97,7 @@ public class LoginCheckServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DetailInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

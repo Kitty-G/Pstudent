@@ -1138,8 +1138,6 @@ var _defaults = {
   customFilters: {},
   customFlags: {},
   globalFlags: '',
-  onSuccess: function(e) { alert('Thank you...') },
-  onFail: function() { alert('Invalid!') },
   responsiveAt: 'auto',
   disableCustom: ''
 }

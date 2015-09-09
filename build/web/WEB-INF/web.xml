@@ -12,6 +12,14 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.servlet.login.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExitLoginServlet</servlet-name>
+        <servlet-class>com.servlet.login.ExitLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailInfoServlet</servlet-name>
+        <servlet-class>com.servlet.detailinfo.DetailInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCheckServlet</servlet-name>
         <url-pattern>/LoginCheckServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitLoginServlet</servlet-name>
+        <url-pattern>/ExitLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailInfoServlet</servlet-name>
+        <url-pattern>/DetailInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
