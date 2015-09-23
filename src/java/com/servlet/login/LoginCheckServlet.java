@@ -46,11 +46,11 @@ public class LoginCheckServlet extends HttpServlet {
                 login login=new login(user,pwd);
                 int power=login.loginVerify();
                 if(power<1){
-                    out.println("<script>alert('Error"+power+"')</script>");
-                    response.sendRedirect("/project/jsp/login/login.jsp");
+                    out.println("<script>alert('帐号或密码错误！');</script>");
+                    response.setHeader("refresh","0.0001;url=/project/jsp/login/login.jsp");
+//                    response.sendRedirect("/project/jsp/login/login.jsp");
                 }else{
 //                    out.println("<script>alert('Bingo!"+power+"')</script>");
-                    
                     session.setAttribute("stdid", user);
                     session.setAttribute("username",login.getUsername());
                     session.setAttribute("power",power);

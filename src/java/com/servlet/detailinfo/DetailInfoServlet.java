@@ -35,6 +35,7 @@ public class DetailInfoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try {
                 HttpSession session = request.getSession();
@@ -54,9 +55,13 @@ public class DetailInfoServlet extends HttpServlet {
 //                out.println("<script>alert('"+output+"');</script>");
                 
                 System.out.println(output);
-//                d_info d_info=new d_info(stdid,rname,sex,id,major,grade,class_no,tel,email1+"@"+email2,addr);
-//                result=d_info.dataUpdate();
-//                System.out.println("result is "+result);
+                d_info d_info=new d_info(stdid,rname,sex,id,major,grade,class_no,tel,email1+"@"+email2,addr);
+                result=d_info.dataUpdate();
+                if(result==0){
+                    
+                }
+                System.out.println("result is "+result);
+                response.sendRedirect("/project/home.jsp");
         } finally {            
             out.close();
         }

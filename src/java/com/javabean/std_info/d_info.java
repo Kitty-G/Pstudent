@@ -27,7 +27,7 @@ public class d_info {
         rname=real_name;
         sex=student_sex;
         id=student_idcard;
-        major=student_major.substring(0, 1)+"_"+student_major.substring(2);
+        major=student_major.substring(0, 2)+"_"+student_major.substring(2);
         grade_class=grade+"_"+class_no;
         tel=telephone;
         email=Email;

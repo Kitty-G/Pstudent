@@ -2,13 +2,16 @@ create user 'reader'@'%' identified by 'aptx4869';
 GRANT select ON p_student.* TO 'reader'@'%'; 
 create user 'writer'@'%' identified by 'aptx4869';
 GRANT insert ON p_student.* TO 'writer'@'%';
+
 create user 'updater'@'%' identified by 'aptx4869';
-GRANT update ON p_student.* TO 'updater'@'%'; 
+GRANT update ON p_student.* TO 'updater'@'%';
+GRANT select ON p_student.* TO 'updater'@'%';
+
 
 create table login(
 stdid		varchar(10)	primary key,
 username	varchar(20)	not null,
-password	varchar(50)	not null,
+password	varchar(50)	not null,                                       //MD5 32bit
 power		int		not null
 )
 

@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
                     result=register.InfoInsert();
                     if(result==0){
                     out.println("<script>alert('Insert!!!"+username+"')</script>");
-//                        response.sendRedirect("/project/jsp/login/login.jsp");
+                        response.sendRedirect("/project/jsp/login/login.jsp");
                     }else{
                         out.println("<script>alert('InfoError!')</script>");
                     }

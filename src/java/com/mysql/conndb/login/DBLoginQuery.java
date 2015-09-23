@@ -5,6 +5,7 @@
 package com.mysql.conndb.login;
 
 import com.mysql.conndb.MySQLOperate;
+import com.mysql.conndb.tools.Security;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -28,6 +29,8 @@ public class DBLoginQuery extends MySQLOperate{
     public int Check() throws SQLException{
         rs=super.ConditionQuery("login","stdid",usr);
         if(rs.next()){
+            Security s=new Security();
+            pwd=s.MD5_Bit32(pwd);
             if(rs.getString("password").equals(pwd)){
                 return this.getPower();
             }else{

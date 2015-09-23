@@ -5,6 +5,7 @@
 package com.mysql.conndb.register;
 
 import com.mysql.conndb.MySQLOperate;
+import com.mysql.conndb.tools.Security;
 import java.sql.SQLException;
 
 /**
@@ -22,6 +23,8 @@ public class DBRegisterInsert extends MySQLOperate{
         pwd=password;
     }
     public int InfoInsert() throws SQLException{
+        Security s=new Security();
+        pwd=s.MD5_Bit32(pwd);
         String sql="insert into login values('"+id+"','"+usr+"','"+pwd+"',1);";
 //        sql="insert into login values('1205010000','bingo00','123456',2)";
         if(!super.InsertSQL(sql)){
