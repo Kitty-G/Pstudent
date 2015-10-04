@@ -34,10 +34,12 @@ public class DBRegisterInsert extends MySQLOperate{
        if(!super.InsertSQL(sql)){
             return 2;
         }                                                                       //return 2
-        sql="insert into p_info(stdid) values ("+id+")";                      //return 3
-        if(!super.InsertSQL(sql)){
-            return 3;
-        }
+       
+       
+//        sql="insert into p_info(stdid) values ("+id+")";                      //return 3
+//        if(!super.InsertSQL(sql)){
+//            return 3;
+//        }                                                                     //change to p_info
         return 0;
     }
     

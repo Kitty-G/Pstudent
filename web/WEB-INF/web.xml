@@ -20,6 +20,10 @@
         <servlet-name>DetailInfoServlet</servlet-name>
         <servlet-class>com.servlet.detailinfo.DetailInfoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentInfoServlet</servlet-name>
+        <servlet-class>com.servlet.studentinfo.StudentInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginCheckServlet</servlet-name>
         <url-pattern>/LoginCheckServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>DetailInfoServlet</servlet-name>
         <url-pattern>/DetailInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentInfoServlet</servlet-name>
+        <url-pattern>/StudentInfoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

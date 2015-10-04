@@ -34,7 +34,7 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
 
     <!-- Begin Form -->
 
-    <form id="my-form" action="/project/DetailInfoServlet" method="post">
+    <form id="my-form" action="/project/Servlet" method="post">
         <div><label>学号:<%=stdid%></label></div>
         <div><label>寝室:</label>
             <select id="dorm" name="dorm">\
@@ -45,14 +45,14 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
                 <option value="05">第五学生公寓</option>
                 <option value="06">第六学生公寓</option>
             </select>
-            <label>寝室号:</label><input type="text" id="dorm_num"/>            
+            <label>寝室号:</label><input type="text" id="room" name="room"/>            
         </div>
         <div><label>生源地:</label>
-            <select id="origin1" name="origin1">
+            <select id="province" name="province">
                 <option value="01">辽宁</option>
                 <option value="02">北京</option>
             </select>
-            <select id="origin2" name="origin2">
+            <select id="city" name="city">
                 <option value="01">沈阳</option>
                 <option value="02">大连</option>
             </select>
