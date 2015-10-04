@@ -7,21 +7,22 @@ create user 'updater'@'%' identified by 'aptx4869';
 GRANT update ON p_student.* TO 'updater'@'%';
 GRANT select ON p_student.* TO 'updater'@'%';
 
+create database p_student;
 
 create table login(
 stdid		varchar(10)	primary key,
 username	varchar(20)	not null,
-password	varchar(50)	not null,                                       //MD5 32bit
+password	varchar(32)	not null,                                       //MD5 32bit
 power		int		not null
-)
+);
 
 create table d_info(
 stdid		varchar(10)	not null,
 realname	varchar(20)	,
 sex		int		,
 idno		varchar(18)	,
-major		varchar(5)	,
-class		varchar(5)	,
+acad_major      varchar(5)	,
+grade_class	varchar(5)	,
 tel		varchar(15)	,
 email		varchar(40)	,
 addr		varchar(50)	,
@@ -32,11 +33,11 @@ foreign key(stdid) references login(stdid) on delete cascade on update cascade
 create table p_info(
 stdid		varchar(10)	not null,
 dorm_num	varchar(6)	,
-city		varchar(5)	,
+prov_city       varchar(5)	,
 p_level		int		,
 p_reason	varchar(50)	,
 speciality	varchar(50)	,
-pt_job		int		,
+part_time       int		,                                               //need true false
 prize		varchar(100)	,
 foreign key(stdid) references login(stdid) on delete cascade on update cascade
 );

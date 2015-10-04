@@ -37,7 +37,7 @@ public class DBD_infoUpdate extends MySQLOperate{
     public int UpdateInfo() throws SQLException{
         int result;
         String sql;
-        sql="update d_info set realname='"+rname+"',sex="+sex+",idno='"+id+"',major='"+dept_major+"',class='"+grade_class+"',tel='"+tel+"',email='"+email+"',addr='"+addr+"' where stdid='"+stdid+"';";
+        sql="update d_info set realname='"+rname+"',sex="+sex+",idno='"+id+"',acad_major='"+dept_major+"',grade_class='"+grade_class+"',tel='"+tel+"',email='"+email+"',addr='"+addr+"' where stdid='"+stdid+"';";
         result=super.SQLUpdate(sql);
         if(result==1){
             sql="update login set power=2 where stdid='"+stdid+"'";
