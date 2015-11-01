@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.servlet.studentinfo;
+package com.servlet.login;
 
-import com.javabean.std_info.p_info;
+import com.javabean.login.login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -20,31 +20,47 @@ import javax.servlet.http.HttpSession;
  *
  * @author KittyG
  */
-public class StudentInfoServlet extends HttpServlet {
+public class AdminLoginServlet extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         try {
             HttpSession session = request.getSession();
-            String stdid=(String)session.getAttribute("stdid");
-            String dorm=request.getParameter("dorm");
-            String room=request.getParameter("room");
-            String province=request.getParameter("province");
-            String city=request.getParameter("city");
-            int level=Integer.parseInt(request.getParameter("level"));
-            String reason=request.getParameter("reason");
-            String skill=request.getParameter("skill");
-            int ptime=Integer.parseInt(request.getParameter("ptime"));
-            String prize=request.getParameter("prize");
-            p_info pi=new p_info(stdid,dorm,room,province,city,level,reason,skill,ptime,prize);
-            int result;
-            result=pi.dataUpdate();
-            
-            //The result  is incomplete
-            response.sendRedirect("/project/home.jsp");      
-        } finally {            
+            String user=request.getParameter("stdid_log");
+            String pwd =request.getParameter("password_log");
+            String captcha=request.getParameter("Captcha_log");
+            String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+            if(code.equals(captcha)){
+                login login=new login(user,pwd,0);
+                int power=login.loginVerify();
+                if(power<1){
+                    out.println("<script>alert('帐号或密码错误！');</script>");
+                    response.setHeader("refresh","0.0001;url=/project/jsp/login/login.jsp");
+//                    response.sendRedirect("/project/jsp/login/login.jsp");
+                }else{
+//                    out.println("<script>alert('Bingo!"+power+"')</script>");
+                    session.setAttribute("stdid", user);
+                    session.setAttribute("username",login.getUsername());
+                    session.setAttribute("power",power);
+                    response.sendRedirect("/project/home.jsp");
+                }
+            }else{
+                out.println("<script>alert('CaptchaError!')</script>");
+            }
+            session.setAttribute("stdid", user);
+        } finally {     
             out.close();
         }
     }
@@ -65,7 +81,7 @@ public class StudentInfoServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(StudentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -84,7 +100,7 @@ public class StudentInfoServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(StudentInfoServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

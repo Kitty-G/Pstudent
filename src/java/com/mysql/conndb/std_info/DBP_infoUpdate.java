@@ -31,11 +31,14 @@ public class DBP_infoUpdate extends MySQLOperate{
         parttime=part_time;
         prize=person_prize;
     }
-    public int updateInfo() throws SQLException{
+    public int UpdateInfo() throws SQLException{
         int result=0;
         String sql;
         sql="insert into p_info values ('"+stdid+"','"+dorm_room+"','"+origin+"',"+level+",'"+reason+"','"+skill+"',"+parttime+",'"+prize+"');";
-        super.InsertSQL(sql);
+        super.InsertSQL(sql);                                                   //need application time
         return result;
+    }
+    public void CloseDB() throws SQLException{
+        super.ConnectClose();
     }
 }

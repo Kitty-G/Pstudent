@@ -26,8 +26,15 @@ public class DBLoginQuery extends MySQLOperate{
         }
     
     
-    public int Check() throws SQLException{
-        rs=super.ConditionQuery("login","stdid",usr);
+    public int Check(int character) throws SQLException{
+        if(character==0){
+            rs=super.ConditionQuery("admin","adminid",usr);                     //admin login
+        }else if(character==1){
+            rs=super.ConditionQuery("login","stdid",usr);                       //student login
+        }else{
+            return -404;
+        }
+        
         if(rs.next()){
             Security s=new Security();
             pwd=s.MD5_Bit32(pwd);

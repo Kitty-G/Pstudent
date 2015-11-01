@@ -114,16 +114,13 @@ public class d_info {
         }
         DBD_infoUpdate du=new DBD_infoUpdate(stdid,rname,sex,id,major,grade_class,tel,email,addr);
         result=du.UpdateInfo();
+        du.CloseDB();
         if(result>1){
-            du.CloseDB();
-            return -111;
-                                                                                //stdid is not unique Database should rollback
+            return -111;                                                        //stdid is not unique Database should rollback
         }
         if(result!=1){
-            du.CloseDB();
             return -1;
         }
-        du.CloseDB();
         return 0;
     }
 }

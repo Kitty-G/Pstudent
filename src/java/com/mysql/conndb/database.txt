@@ -39,5 +39,22 @@ p_reason	varchar(50)	,
 speciality	varchar(50)	,
 part_time       int		,                                               //need true false
 prize		varchar(100)	,
+app_time        date            ,                                               //incomplete
 foreign key(stdid) references login(stdid) on delete cascade on update cascade
+);
+
+create table admin(
+adminid         varchar(10)     primary key,
+username        varchar(20)     not null,
+password        varchar(32)     not null,
+power           int             not null
+)
+
+create table news(
+newsid          varchar(10)     primary key,
+adminid         varchar(10)     ,
+newsname        varchar(100)    ,
+newstime        date            ,
+newspath        varchar(200)    ,
+foreign key(adminid) references admin(adminid) on delete cascade on update cascade
 );

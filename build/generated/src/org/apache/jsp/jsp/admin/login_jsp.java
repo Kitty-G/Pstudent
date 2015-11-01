@@ -1,4 +1,4 @@
-package org.apache.jsp.jsp.login;
+package org.apache.jsp.jsp.admin;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -106,11 +106,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <a class=\"hiddenanchor\" id=\"tologin\"></a>\n");
       out.write("                    <div id=\"wrapper\">\n");
       out.write("                        <div id=\"login\" class=\"animate form\">\n");
-      out.write("                            <form action=\"../../StdLoginServlet\" method=\"post\" id=\"form_log\"> \n");
-      out.write("                                <h1>学生 登录</h1> \n");
+      out.write("                            <form action=\"../../AdminLoginServlet\" method=\"post\" id=\"form_log\"> \n");
+      out.write("                                <h1>管理员 登录</h1> \n");
       out.write("                                <p> \n");
-      out.write("                                    <label for=\"stdid_log\" > 学号 </label>\n");
-      out.write("                                    <input id=\"stdid_log\" name=\"stdid_log\" type=\"text\" placeholder=\"请输入学号\"/>\n");
+      out.write("                                    <label for=\"stdid_log\" > 账号 </label>\n");
+      out.write("                                    <input id=\"stdid_log\" name=\"stdid_log\" type=\"text\" placeholder=\"请输入账号\"/>\n");
       out.write("                                </p>\n");
       out.write("                                <p> \n");
       out.write("                                    <label for=\"password_log\" > 密码 </label>\n");
@@ -126,10 +126,6 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                    <input type=\"submit\" value=\"Login\" id=\"submit_log\"/> \n");
       out.write("\t\t\t\t\t\t\t\t</p>\n");
       out.write("                           </form>\n");
-      out.write("                                <p class=\"change_link\">\n");
-      out.write("\t\t\t\t\t\t\t\t\t没有帐号？\n");
-      out.write("\t\t\t\t\t\t\t\t\t<a href=\"../register/register.jsp\">注册</a>\n");
-      out.write("\t\t\t\t\t\t\t\t</p>\n");
       out.write("                            \n");
       out.write("                        </div>\n");
       out.write("\n");

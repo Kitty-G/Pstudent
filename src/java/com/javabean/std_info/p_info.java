@@ -4,6 +4,9 @@
  */
 package com.javabean.std_info;
 
+import com.mysql.conndb.std_info.DBP_infoUpdate;
+import java.sql.SQLException;
+
 /**
  *
  * @author KittyG
@@ -92,8 +95,16 @@ public class p_info {
         this.prize = prize;
     }
     
-    public int dataUpdate(){
+    public int dataUpdate() throws SQLException{
+        int result;
         
+        //Word Check
+        DBP_infoUpdate pu=new DBP_infoUpdate(stdid,dorm_room,origin,level,reason,skill,parttime,prize);
+        result=pu.UpdateInfo();
+        pu.CloseDB();
+        if(result!=1){
+            return -1;
+        }
         return 0;
     }
 }

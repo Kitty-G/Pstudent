@@ -8,14 +8,16 @@ public class login{
     private String usr;
     private String username=null;
     private String pwd;
+    private int character;
     public login(){
         usr=null;
         pwd=null;
     }
 
-    public login(String user,String password){
-        usr=user;
-        pwd=password;
+    public login(String usr,String pwd,int character){
+        this.usr=usr;
+        this.pwd=pwd;
+        this.character=character;
     }
     public String getUsr() {
         return usr;
@@ -43,7 +45,7 @@ public class login{
         int power;
         int checkResult;
         if(wc.numcharCheck(usr)==-1){
-            checkResult=lq.Check();
+            checkResult=lq.Check(character);
             if(checkResult>0){
                 power=checkResult;
                 username=lq.getUsername();

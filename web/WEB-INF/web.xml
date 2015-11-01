@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <servlet>
-        <servlet-name>LoginCheckServlet</servlet-name>
-        <servlet-class>com.servlet.login.LoginCheckServlet</servlet-class>
-    </servlet>
+    <welcome-file-list>
+        <welcome-file>home.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <servlet-class>com.servlet.tools.CaptchaCheckServlet</servlet-class>
@@ -24,10 +23,14 @@
         <servlet-name>StudentInfoServlet</servlet-name>
         <servlet-class>com.servlet.studentinfo.StudentInfoServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginCheckServlet</servlet-name>
-        <url-pattern>/LoginCheckServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>StdLoginServlet</servlet-name>
+        <servlet-class>com.servlet.login.StdLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>com.servlet.login.AdminLoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <url-pattern>/CaptchaCheckServlet</url-pattern>
@@ -47,6 +50,14 @@
     <servlet-mapping>
         <servlet-name>StudentInfoServlet</servlet-name>
         <url-pattern>/StudentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StdLoginServlet</servlet-name>
+        <url-pattern>/StdLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/AdminLoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

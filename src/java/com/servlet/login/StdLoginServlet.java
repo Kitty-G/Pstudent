@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author KittyG
  */
-public class LoginCheckServlet extends HttpServlet {
+public class StdLoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -43,7 +43,7 @@ public class LoginCheckServlet extends HttpServlet {
             String captcha=request.getParameter("Captcha_log");
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
-                login login=new login(user,pwd);
+                login login=new login(user,pwd,1);
                 int power=login.loginVerify();
                 if(power<1){
                     out.println("<script>alert('帐号或密码错误！');</script>");
@@ -81,7 +81,7 @@ public class LoginCheckServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StdLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +100,7 @@ public class LoginCheckServlet extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginCheckServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StdLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

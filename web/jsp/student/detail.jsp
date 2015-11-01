@@ -27,7 +27,6 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
 </head>
 <body>
 
-
 <div class="row">
 
     <div class="eightcol last">

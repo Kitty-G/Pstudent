@@ -27,14 +27,13 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
 </head>
 <body>
 
-
 <div class="row">
 
     <div class="eightcol last">
 
     <!-- Begin Form -->
 
-    <form id="my-form" action="/project/Servlet" method="post">
+    <form id="my-form" action="/project/StudentInfoServlet" method="post">
         <div><label>学号:<%=stdid%></label></div>
         <div><label>寝室:</label>
             <select id="dorm" name="dorm">\

@@ -67,11 +67,11 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form action="../../StdLoginServlet" method="post" id="form_log"> 
-                                <h1>学生 登录</h1> 
+                            <form action="../../AdminLoginServlet" method="post" id="form_log"> 
+                                <h1>管理员 登录</h1> 
                                 <p> 
-                                    <label for="stdid_log" > 学号 </label>
-                                    <input id="stdid_log" name="stdid_log" type="text" placeholder="请输入学号"/>
+                                    <label for="stdid_log" > 账号 </label>
+                                    <input id="stdid_log" name="stdid_log" type="text" placeholder="请输入账号"/>
                                 </p>
                                 <p> 
                                     <label for="password_log" > 密码 </label>
@@ -87,10 +87,6 @@
                                     <input type="submit" value="Login" id="submit_log"/> 
 								</p>
                            </form>
-                                <p class="change_link">
-									没有帐号？
-									<a href="../register/register.jsp">注册</a>
-								</p>
                             
                         </div>
 

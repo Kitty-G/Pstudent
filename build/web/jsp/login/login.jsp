@@ -67,7 +67,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form action="../../LoginCheckServlet" method="post" id="form_log"> 
+                            <form action="../../StdLoginServlet" method="post" id="form_log"> 
                                 <h1>学生 登录</h1> 
                                 <p> 
                                     <label for="stdid_log" > 学号 </label>

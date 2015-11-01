@@ -58,10 +58,10 @@ public class DetailInfoServlet extends HttpServlet {
                 d_info d_info=new d_info(stdid,rname,sex,id,major,grade,class_no,tel,email1+"@"+email2,addr);
                 result=d_info.dataUpdate();
                 if(result==0){
-                    
+                    System.out.println("result is "+result);
+                    response.sendRedirect("/project/home.jsp");                                                                // success
                 }
-                System.out.println("result is "+result);
-                response.sendRedirect("/project/home.jsp");
+                
         } finally {            
             out.close();
         }
