@@ -48,13 +48,15 @@ adminid         varchar(10)     primary key,
 username        varchar(20)     not null,
 password        varchar(32)     not null,
 power           int             not null
-)
+);
 
 create table news(
 newsid          varchar(10)     primary key,
 adminid         varchar(10)     ,
 newsname        varchar(100)    ,
-newstime        date            ,
+newstime        timestamp(6)    ,
 newspath        varchar(200)    ,
 foreign key(adminid) references admin(adminid) on delete cascade on update cascade
 );
+insert into news values ('2015110200','1205010116','我是hello world','2015-11-02 09:09:11','D:\java\project');
+insert into news values ('2015110200','1205010116','我是hello world',null,'D:\java\project');

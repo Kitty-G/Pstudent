@@ -4,7 +4,7 @@
  */
 package com.servlet.login;
 
-import com.javabean.login.login;
+import com.javabean.login.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -43,7 +43,7 @@ public class StdLoginServlet extends HttpServlet {
             String captcha=request.getParameter("Captcha_log");
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
-                login login=new login(user,pwd,1);
+                Login login=new Login(user,pwd,1);
                 int power=login.loginVerify();
                 if(power<1){
                     out.println("<script>alert('帐号或密码错误！');</script>");

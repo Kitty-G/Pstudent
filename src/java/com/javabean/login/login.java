@@ -4,17 +4,17 @@ import com.mysql.conndb.WordCheck;
 import com.mysql.conndb.login.DBLoginQuery;
 import java.sql.SQLException;
 
-public class login{
+public class Login{
     private String usr;
     private String username=null;
     private String pwd;
     private int character;
-    public login(){
+    public Login(){
         usr=null;
         pwd=null;
     }
 
-    public login(String usr,String pwd,int character){
+    public Login(String usr,String pwd,int character){
         this.usr=usr;
         this.pwd=pwd;
         this.character=character;

@@ -3,6 +3,10 @@ package org.apache.jsp.jsp.news;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.Iterator;
+import java.util.List;
+import com.javabean.news.NewsInfo;
+import com.javabean.news.News;
 
 public final class news_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -45,13 +49,10 @@ public final class news_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-
-    String []array=new String[5];
-    for(int i=0;i<5;i++){
-        array[i]=i+"";
-    }
-
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("       \n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -59,20 +60,39 @@ public final class news_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <h1>Hello World!</h1>\n");
-      out.write("        ");
+      out.write("        <table align=\"center\" width=\"600px\"> \n");
+      out.write("            ");
 
-            for(int i=0;i<5;i++){
-        
+                News news=new News();
+                NewsInfo ni;
+                List list;
+                Iterator it;
+                list=news.getNewsList();
+                it = list.iterator();
+                while(it.hasNext()){
+                    ni=(NewsInfo)it.next();
+                    
+            
+      out.write("    \n");
+      out.write("            <tr>\n");
+      out.write("                <td colspan=\"3\">\n");
+      out.write("                    <a href=\"\" >");
+      out.print(ni.getFormatNewsName());
+      out.write("</a>\n");
+      out.write("                    \n");
+      out.write("                </td>\n");
+      out.write("                <td colspan=\"1\">\n");
+      out.write("                    ");
+      out.print(ni.getNews_time());
       out.write("\n");
-      out.write("        <p>");
-      out.print(array[i]);
-      out.write("</p>\n");
-      out.write("        ");
+      out.write("                </td>\n");
+      out.write("            </tr>\n");
+      out.write("            ");
 
-            }
-        
+                }
+            
       out.write("\n");
+      out.write("        </table>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

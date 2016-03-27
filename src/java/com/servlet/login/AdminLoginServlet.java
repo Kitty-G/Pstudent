@@ -4,7 +4,7 @@
  */
 package com.servlet.login;
 
-import com.javabean.login.login;
+import com.javabean.login.Login;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -43,18 +43,18 @@ public class AdminLoginServlet extends HttpServlet {
             String captcha=request.getParameter("Captcha_log");
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
-                login login=new login(user,pwd,0);
+                Login login=new Login(user,pwd,0);
                 int power=login.loginVerify();
                 if(power<1){
                     out.println("<script>alert('帐号或密码错误！');</script>");
-                    response.setHeader("refresh","0.0001;url=/project/jsp/login/login.jsp");
+                    response.setHeader("refresh","0.0001;url=/project/jsp/admin/login.jsp");
 //                    response.sendRedirect("/project/jsp/login/login.jsp");
                 }else{
 //                    out.println("<script>alert('Bingo!"+power+"')</script>");
-                    session.setAttribute("stdid", user);
+                    session.setAttribute("adminid", user);
                     session.setAttribute("username",login.getUsername());
                     session.setAttribute("power",power);
-                    response.sendRedirect("/project/home.jsp");
+                    response.sendRedirect("/project/admin/home.jsp");
                 }
             }else{
                 out.println("<script>alert('CaptchaError!')</script>");
