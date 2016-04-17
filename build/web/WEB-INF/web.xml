@@ -31,6 +31,10 @@
         <servlet-name>AdminLoginServlet</servlet-name>
         <servlet-class>com.servlet.login.AdminLoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.servlet.login.LoginServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <url-pattern>/CaptchaCheckServlet</url-pattern>
@@ -58,6 +62,10 @@
     <servlet-mapping>
         <servlet-name>AdminLoginServlet</servlet-name>
         <url-pattern>/AdminLoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,11 +11,10 @@ import java.util.Date;
  *
  * @author KittyG
  */
-public class Student extends User{
-    private String userId;
-    private Major major;
+public class Student extends User {
+
     private int grade;
+    private String majorCode;
     private int classNo;
     private Date intendedTime;
-    
 }

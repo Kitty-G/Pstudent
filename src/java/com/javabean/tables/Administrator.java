@@ -18,4 +18,6 @@ public class Administrator extends User {
         Major
     }
     private ManagementLevel managementLevel;
+    private String telephone;
+    private String email;
 }

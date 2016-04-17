@@ -13,4 +13,20 @@ public class ManagingDepartment {
 
     private String administatorId;
     private String departmentCode;
+
+    public String getAdministatorId() {
+        return administatorId;
+    }
+
+    public void setAdministatorId(String administatorId) {
+        this.administatorId = administatorId;
+    }
+
+    public String getDepartmentCode() {
+        return departmentCode;
+    }
+
+    public void setDepartmentCode(String departmentCode) {
+        this.departmentCode = departmentCode;
+    }
 }

@@ -27,22 +27,13 @@ public class Security {
             m.update(source_toByte);
             source_MD5Byte=m.digest();
             source_result=ByteToHexString(source_MD5Byte);
-        }catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        catch (NoSuchAlgorithmException ex) {
+        }catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             Logger.getLogger(Security.class.getName()).log(Level.SEVERE, null, ex);
         }
         return source_result;
     }
     private static String ByteToHexString(byte[] data){
         StringBuilder s=new StringBuilder();
-//        for(byte i:data){
-//            s.append(Integer.toHexString(0xff & i));
-//        }
-//        for (int i = 0; i < data.length; i++) {
-//            s.append(Integer.toHexString(0xff & data[i]));
-//        }
         for(int i = 0;i<data.length;i++){
             String hex = Integer.toHexString(0xff & data[i]);
             if(hex.length() == 1)

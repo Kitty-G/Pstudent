@@ -40,7 +40,7 @@ body{background:url(../images/bg.png) repeat-x fixed #627697;}
 .guanggao2{width:1228px; height:50px; background:#fff; margin:0 auto; font-size:18px; text-align:center; line-height:50px;}
 .anli{width:1228px; background:#fff; margin:0 auto;}
 .hezuo{width:1228px;  background:#fff; margin:0 auto;}
-.hezuo .hezuos{margin:0 20px; 0 20px; width:1188px; overflow:hidden;}
+.hezuo .hezuos{margin:0 20px 0 20px; width:1188px; overflow:hidden;}
 .hezuo .hezuos li{border-top:1px solid #eee; border-left:1px solid #eee; border-right:1px solid #eee; float:left;}
 .hezuo .hezuos img{padding:10px 10px 20px 10px; width:176px; height:60px;}
 .footer{width:1228px; height:300px; background:#252728; margin:0 auto; color:#ccc;}

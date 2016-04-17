@@ -32,9 +32,9 @@ public class NeedyStudent {
     private String address;
     private String originCode;
     private String dormRoom;
-    private PovertyLevel personSpeciality;
+    private String personSpeciality;
     private String receivedAward;
-    private int povertyLevel;
+    private PovertyLevel povertyLevel;
     private String povertyReason;
     private Date applicationDate;
     private Date validatedDate;
