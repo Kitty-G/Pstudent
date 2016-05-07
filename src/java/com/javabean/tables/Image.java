@@ -4,7 +4,7 @@
  */
 package com.javabean.tables;
 
-import com.javabean.common.Notice.AppType;
+import com.javabean.common.Notice.NoticeType;
 import java.util.Date;
 
 /**
@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Image {
     private String noticeId;
-    private AppType appType;
+    private NoticeType appType;
     private String imageId;
     private String imageName;
     private String relativePath;
@@ -27,11 +27,11 @@ public class Image {
         this.noticeId = noticeId;
     }
 
-    public AppType getAppType() {
+    public NoticeType getAppType() {
         return appType;
     }
 
-    public void setAppType(AppType appType) {
+    public void setAppType(NoticeType appType) {
         this.appType = appType;
     }
 

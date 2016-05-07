@@ -10,13 +10,15 @@ import java.util.Date;
  *
  * @author KittyG
  */
-public class User {
-    public enum Identity{
+public abstract class User {
+
+    public enum Identity {
         User,
         Administrator,
         SuperAdministrator
     }
-    public enum Gender{
+
+    public enum Gender {
         Unknown,
         Male,
         Female
@@ -26,6 +28,18 @@ public class User {
     private Identity identity;
     private Gender gender;
     private Date createTime;
+
+    public User() {
+
+    }
+
+    public User(String userId, String userName, Identity identity, Gender gender, Date createTime) {
+        this.userId = userId;
+        this.userName = userName;
+        this.identity = identity;
+        this.gender = gender;
+        this.createTime = createTime;
+    }
 
     public String getUserId() {
         return userId;
@@ -66,5 +80,5 @@ public class User {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
-    
+
 }

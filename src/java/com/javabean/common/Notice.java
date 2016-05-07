@@ -10,52 +10,78 @@ import java.util.Date;
  *
  * @author KittyG
  */
-public class Notice {
-    public enum AppType{
+public abstract class Notice {
+
+    public enum NoticeType {
         News,
         Activity
     }
-    public enum NoticeStatus{
+
+    public enum NoticeStatus {
         Default,
         Sticky
     }
-    private String id;
-    private String title;
-    private String text;
-    private AppType noticeType;
+    private String noticeId;
+    private String noticeTitle;
+    private String noticeContent;
+    private String adminId;
+    private NoticeType noticeType;
     private NoticeStatus noticeStatus;
-    private int imageNumber;
+    private int imageCount;
     private Date createTime;
-    
-    public String getId() {
-        return id;
+
+    public Notice() {
+
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Notice(String noticeId, String noticeTitle, String noticeContent, String adminId, NoticeType noticeType, NoticeStatus noticeStatus, int imageCount, Date createTime) {
+        this.noticeId = noticeId;
+        this.noticeTitle = noticeTitle;
+        this.noticeContent = noticeContent;
+        this.adminId = adminId;
+        this.noticeType = noticeType;
+        this.noticeStatus = noticeStatus;
+        this.imageCount = imageCount;
+        this.createTime = createTime;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNoticeId() {
+        return noticeId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNoticeId(String noticeId) {
+        this.noticeId = noticeId;
     }
 
-    public String getText() {
-        return text;
+    public String getNoticeTitle() {
+        return noticeTitle;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle;
     }
 
-    public AppType getNoticeType() {
+    public String getNoticeContent() {
+        return noticeContent;
+    }
+
+    public void setNoticeContent(String noticeContent) {
+        this.noticeContent = noticeContent;
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
+
+    public void setAdminId(String adminId) {
+        this.adminId = adminId;
+    }
+
+    public NoticeType getNoticeType() {
         return noticeType;
     }
 
-    public void setNoticeType(AppType noticeType) {
+    public void setNoticeType(NoticeType noticeType) {
         this.noticeType = noticeType;
     }
 
@@ -67,12 +93,12 @@ public class Notice {
         this.noticeStatus = noticeStatus;
     }
 
-    public int getImageNumber() {
-        return imageNumber;
+    public int getImageCount() {
+        return imageCount;
     }
 
-    public void setImageNumber(int imageNumber) {
-        this.imageNumber = imageNumber;
+    public void setImageCount(int imageCount) {
+        this.imageCount = imageCount;
     }
 
     public Date getCreateTime() {
@@ -82,4 +108,5 @@ public class Notice {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
 }

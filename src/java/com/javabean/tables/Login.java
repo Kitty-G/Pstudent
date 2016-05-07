@@ -4,7 +4,10 @@
  */
 package com.javabean.tables;
 
+import com.databasecontrol.mysql.SQLOperate;
 import com.javabean.common.User.Identity;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,8 +20,13 @@ public class Login {
     private String userName;
     private Identity identity;
 
-    public Login(String userId) {
+    public Login() {
+
+    }
+
+    public Login(String userId, String md5Password) {
         this.userId = userId;
+        this.md5Password = md5Password;
     }
 
     public Login(String userId, String md5Password, String userName, Identity identity) {
@@ -60,8 +68,26 @@ public class Login {
         this.identity = identity;
     }
 
-    public Login getLoginInfo() {
-        Login login = null;
+    public Login GetLoginInfo(String userId) {
+        Login login;
+        ResultSet rs;
+        String sql;
+        sql = "SELECT * FROM NEWS WHERE USERID = ? ";
+        SQLOperate sqlOperate = new SQLOperate();
+        rs = sqlOperate.Query(sql, userId);
+        try {
+            login = new Login();
+            while (rs.next()) {
+                login.userId = rs.getString("USERID");
+                login.md5Password = rs.getString("MD5PASSWORD");
+                login.userName = rs.getString("USERNAME");
+                login.identity = Identity.values()[rs.getInt("IDENTITY")];
+            }
+        } catch (SQLException ex) {
+            //need log
+            return null;
+        }
         return login;
     }
+
 }

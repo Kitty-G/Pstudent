@@ -22,8 +22,7 @@ public class DefaultValue {
             switch (field.getInternalName()) { 
             case "CreateTime":
                 Date date = new Date();
-                Convert convert = new Convert();
-                defaultValue = convert.ConvertDateToTime(date, TimeFormat.YYYYMMDDHHMMSS);
+                defaultValue = Convert.ConvertDateToString(date, TimeFormat.YYYYMMDDHHMMSS);
                 break;
             default:
                 throw new EnumInvalidException();

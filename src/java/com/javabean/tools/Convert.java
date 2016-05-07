@@ -20,12 +20,22 @@ import java.util.Date;
 public class Convert {
 
     public enum TimeFormat {
+
         YYYYMMDDHHMMSS,
         YYYYMMDD,
         HHMMSS
     }
 
-    public String ConvertDateToTime(Date date, TimeFormat timeFormat) throws Exception {
+    public enum ReturnStringValue {
+
+        NULL,
+        Empty
+    }
+
+    private Convert() {
+    }
+
+    public static String ConvertDateToString(Date date, TimeFormat timeFormat) throws Exception {
 
         String format;
         SimpleDateFormat simpleDateFormat;
@@ -38,7 +48,7 @@ public class Convert {
         }
     }
 
-    public Date ConvertTimeToDate(String time, TimeFormat timeFormat) throws ConvertException {
+    public static Date ConvertStringToDate(String time, TimeFormat timeFormat) throws ConvertException {
         String format;
         SimpleDateFormat simpleDateFormat;
         try {
@@ -50,7 +60,7 @@ public class Convert {
         }
     }
 
-    private String getTimeFormatString(TimeFormat timeFormat) {
+    private static String getTimeFormatString(TimeFormat timeFormat) {
         String format = null;
         switch (timeFormat) {
             case YYYYMMDDHHMMSS:
@@ -68,7 +78,7 @@ public class Convert {
         return format;
     }
 
-    public String ConvertStringTo32BitMD5String(String string) throws Exception {
+    public static String ConvertStringTo32BitMD5String(String string) throws Exception {
         String MD5String;
         MessageDigest messageDigest;
         byte[] stringByte;
@@ -87,7 +97,7 @@ public class Convert {
         return MD5String;
     }
 
-    private String ByteToHexString(byte[] data) {
+    private static String ByteToHexString(byte[] data) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < data.length; i++) {
             String hex = Integer.toHexString(0xff & data[i]);
@@ -97,5 +107,21 @@ public class Convert {
             stringBuilder.append(hex);
         }
         return stringBuilder.toString();
+    }
+
+    public static String EnumToString(Enum enumValue) {
+        return String.valueOf(enumValue.ordinal());
+    }
+
+    public static String NullToString(String string, ReturnStringValue value) {
+        if (string == null) {
+            if (value == ReturnStringValue.NULL) {
+                return "NULL";
+            } else {
+                return "";
+            }
+        } else {
+            return string;
+        }
     }
 }

@@ -42,9 +42,9 @@ public class LoginServlet extends HttpServlet {
             if (captchaChecker.CheckCaptcha(captchaCode, session)) {
 //                return false;
             }
-            LoginWorker login = new LoginWorker(userId, password);
-            if (login.LoginChecker()) {
-                switch(login.getIdentity()){
+            LoginWorker loginWorker = new LoginWorker(userId, password);
+            if (loginWorker.LoginChecker()) {
+                switch(loginWorker.getLogin().getIdentity()){
                     case User:
                         break;
                     case Administrator:
