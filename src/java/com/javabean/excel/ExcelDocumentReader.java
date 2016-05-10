@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -35,6 +36,18 @@ public class ExcelDocumentReader {
     public ExcelDocumentReader(String filePath, ExcelDocumentType excelDocumentType) {
         this.filePath = filePath;
         this.excelDocumentType = excelDocumentType;
+    }
+
+    public HashMap getSheetNameMap() {
+        return sheetNameMap;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public ExcelDocumentType getExcelDocumentType() {
+        return excelDocumentType;
     }
 
     public ExcelDocument GetExcelDocument() {
@@ -76,12 +89,12 @@ public class ExcelDocumentReader {
             if (this.excelDocumentType == ExcelDocumentType.XLS) {
                 sheetCount = this.hssfWorkbook.getNumberOfSheets();
                 for (int i = 0; i < sheetCount; i++) {
-                    this.sheetNameMap.put(String.valueOf(1), this.hssfWorkbook.getSheetName(i));
+                    this.sheetNameMap.put(String.valueOf(i), this.hssfWorkbook.getSheetName(i));
                 }
             } else {
                 sheetCount = this.workbook.getNumberOfSheets();
                 for (int i = 0; i < sheetCount; i++) {
-                    this.sheetNameMap.put(String.valueOf(1), this.workbook.getSheetName(i));
+                    this.sheetNameMap.put(String.valueOf(i), this.workbook.getSheetName(i));
                 }
             }
             result = true;
@@ -107,8 +120,8 @@ public class ExcelDocumentReader {
         return sheet;
     }
 
-    public String[] GetColumnName(int sheetIndex) {
-        String[] columnNameList;
+    public List<String> GetColumnName(int sheetIndex) {
+        List<String> columnNameList;
         Sheet sheet;
         Cell cell;
         int columnCount;
@@ -119,11 +132,11 @@ public class ExcelDocumentReader {
         }
         Row row = sheet.getRow(0);
         columnCount = row.getLastCellNum();
-        columnNameList = new String[columnCount];
+        columnNameList = new ArrayList();
         for (int i = 0; i < columnCount; i++) {
             cell = row.getCell(i);
             stringTemp = Convert.NullToString(cell.getStringCellValue(), ReturnStringValue.NULL);
-            columnNameList[i] = stringTemp;
+            columnNameList.add(stringTemp);
         }
         return columnNameList;
     }
@@ -161,6 +174,7 @@ public class ExcelDocumentReader {
             row = sheet.getRow(rowIndex);
             for (int i = 0; i < columnCount; i++) {
                 cell = row.getCell(i);
+                cell.setCellType(CELL_TYPE_STRING);
                 if (cell == null) {
                     stringTemp = "NULL";
                 } else {
@@ -175,7 +189,7 @@ public class ExcelDocumentReader {
     }
 
     public static void main(String[] args) {
-        ExcelDocumentReader reader = new ExcelDocumentReader("D:/a.xls", ExcelDocumentType.XLS);
+        ExcelDocumentReader reader = new ExcelDocumentReader("D:/doit.xlsx", ExcelDocumentType.XLSX);
         if (reader.Initialize()) {
             Iterator iter = reader.sheetNameMap.entrySet().iterator();
             System.out.println("遍历sheet");

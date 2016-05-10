@@ -69,7 +69,7 @@ public class SQLOperate extends ConnectDatabase {
         sql.append(" values (");
         sql.append(plus);
         sql.append(");");
-        System.out.println(sql);
+//        System.out.println(sql);
         try {
             prepareStatement = connection.prepareStatement(sql.toString());
             for (int i = 0; i < values.size(); i++) {
@@ -78,7 +78,7 @@ public class SQLOperate extends ConnectDatabase {
             result = prepareStatement.executeUpdate();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            //log e.printStackTrace();
             return -500;
         }
         return result;

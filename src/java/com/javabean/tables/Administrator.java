@@ -12,21 +12,22 @@ import com.javabean.common.User;
  */
 public class Administrator extends User {
 
-    public enum ManagementLevel {
-        University,
+    public enum ManageLevel {
+        Undefined,
+        Major,
         Academy,
-        Major
+        University
     }
-    private ManagementLevel managementLevel;
+    private ManageLevel manageLevel;
     private String telephone;
     private String email;
 
-    public ManagementLevel getManagementLevel() {
-        return managementLevel;
+    public ManageLevel getManageLevel() {
+        return manageLevel;
     }
 
-    public void setManagementLevel(ManagementLevel managementLevel) {
-        this.managementLevel = managementLevel;
+    public void setManageLevel(ManageLevel manageLevel) {
+        this.manageLevel = manageLevel;
     }
 
     public String getTelephone() {

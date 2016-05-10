@@ -23,11 +23,12 @@ public class LoginWorker {
 
     }
 
-    public LoginWorker(String userId, String password) {
+    public LoginWorker(String userId, String password, Identity identity) {
         try {
-            this.login = new Login(userId, Convert.ConvertStringTo32BitMD5String(password));
+            this.login = new Login(userId, Convert.ConvertStringTo32BitMD5String(password), identity);
         } catch (Exception ex) {
             Logger.getLogger(LoginWorker.class.getName()).log(Level.SEVERE, null, ex);
+            login = null;
         }
     }
 
@@ -36,6 +37,7 @@ public class LoginWorker {
             this.login = new Login(userId, Convert.ConvertStringTo32BitMD5String(password), userName, identity);
         } catch (Exception ex) {
             Logger.getLogger(LoginWorker.class.getName()).log(Level.SEVERE, null, ex);
+            login = null;
         }
     }
 
@@ -50,9 +52,9 @@ public class LoginWorker {
     public boolean LoginChecker() {
         boolean result;
         Login loginChecker;
-        loginChecker = login.GetLoginInfo(login.getUserId());
+        loginChecker = login.GetLoginInfo(login.getUserId(), login.getIdentity());
         result = false;
-        if (login == null || loginChecker == null) {
+        if (login == null || loginChecker.getUserId() == null) {
             return false;
         }
         if (loginChecker.getMd5Password().equals(this.login.getMd5Password())) {

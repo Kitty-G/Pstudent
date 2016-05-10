@@ -109,7 +109,7 @@ public class Convert {
         return stringBuilder.toString();
     }
 
-    public static String EnumToString(Enum enumValue) {
+    public static String EnumToIntString(Enum enumValue) {
         return String.valueOf(enumValue.ordinal());
     }
 

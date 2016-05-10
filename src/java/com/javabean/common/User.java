@@ -13,6 +13,7 @@ import java.util.Date;
 public abstract class User {
 
     public enum Identity {
+        Visitor,
         User,
         Administrator,
         SuperAdministrator

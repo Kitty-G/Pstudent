@@ -43,7 +43,7 @@ public class AdminLoginServlet extends HttpServlet {
             String captcha=request.getParameter("Captcha_log");
             String code=(String)session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
             if(code.equals(captcha)){
-                LoginWorker login=new LoginWorker(user,pwd,0);
+                LoginWorker login=new LoginWorker(user,pwd,);
                 int power=login.loginVerify();
                 if(power<1){
                     out.println("<script>alert('帐号或密码错误！');</script>");

@@ -113,7 +113,7 @@
                             </form>
                                 <p class="change_link">
 									已经有账号 ?
-									<a href="../login/login.jsp">登录</a>
+									<a href="../student/login.jsp">登录</a>
 								</p>
                             
                         </div>						

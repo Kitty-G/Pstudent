@@ -30,11 +30,12 @@ public class News extends Notice {
     }
 
     public News GetNewsInfo(String noticeId) {
+        SQLOperate sqlOperate;
         News news;
         ResultSet rs;
         String sql;
         sql = "SELECT * FROM NEWS WHERE NOTICEID = ? ";
-        SQLOperate sqlOperate = new SQLOperate();
+        sqlOperate = new SQLOperate();
         rs = sqlOperate.Query(sql, noticeId);
         try {
             news = new News();
@@ -66,7 +67,7 @@ public class News extends Notice {
             if (values == null) {
                 return false;
             }
-            affectCount = sqlOperate.Insert("News", values);
+            affectCount = sqlOperate.Insert("NEWS", values);
             result = affectCount == 1;
         } catch (Exception ex) {
             result = false;
@@ -82,8 +83,8 @@ public class News extends Notice {
             values.add(this.getNoticeTitle());
             values.add(this.getNoticeContent());
             values.add(this.getAdminId());
-            values.add(Convert.EnumToString(this.getNoticeType()));
-            values.add(Convert.EnumToString(this.getNoticeStatus()));
+            values.add(Convert.EnumToIntString(this.getNoticeType()));
+            values.add(Convert.EnumToIntString(this.getNoticeStatus()));
             values.add(String.valueOf(this.getImageCount()));
             values.add(Convert.ConvertDateToString(this.getCreateTime(), Convert.TimeFormat.YYYYMMDDHHMMSS));
         } catch (Exception ex) {

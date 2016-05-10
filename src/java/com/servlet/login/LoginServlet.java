@@ -5,6 +5,7 @@
  */
 package com.servlet.login;
 
+import com.javabean.common.User.Identity;
 import com.javabean.login.LoginWorker;
 import com.javabean.tools.CaptchaChecker;
 import java.io.IOException;
@@ -34,18 +35,37 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            String userId = request.getParameter("UserId");
-            String password = request.getParameter("Password");
-            String captchaCode = request.getParameter("Captcha");
-            CaptchaChecker captchaChecker = new CaptchaChecker();
+            HttpSession session;
+            String userId;
+            String password;
+            String captchaCode;
+            int userType;
+            Identity identity;
+            CaptchaChecker captchaChecker;
+            LoginWorker loginWorker;
+
+            session = request.getSession();
+            userId = request.getParameter("UserId");
+            captchaCode = request.getParameter("Captcha");
+            password = request.getParameter("Password");
+            userType = Integer.parseInt(request.getParameter("UserType"));
+            captchaChecker = new CaptchaChecker();
+            try {
+                identity = Identity.values()[userType];
+            } catch (Exception ex) {
+//               output return false;
+                throw ex;
+            }
+
             if (captchaChecker.CheckCaptcha(captchaCode, session)) {
 //                return false;
             }
-            LoginWorker loginWorker = new LoginWorker(userId, password);
+            loginWorker = new LoginWorker(userId, password, identity);
+
             if (loginWorker.LoginChecker()) {
-                switch(loginWorker.getLogin().getIdentity()){
+                switch (loginWorker.getLogin().getIdentity()) {
                     case User:
+                        out.print("<script>alert('bingo');</script>");
                         break;
                     case Administrator:
                         //Administrator UI
@@ -55,8 +75,11 @@ public class LoginServlet extends HttpServlet {
                         break;
                 }
             } else {
+                out.print("<script>alert('false');</script>");
 //                return false;
             }
+        } catch (Exception ex) {
+            //
         }
     }
 

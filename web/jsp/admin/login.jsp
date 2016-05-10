@@ -21,82 +21,81 @@
         <link rel="stylesheet" type="text/css" href="../../css/login/animate-custom.css" />
         <script type="text/javascript" src="../../javascript/lib/jquery-1.8.2.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function(){
-               $("#captchaimg_log").click(function(){
-                  this.src="/project/Kaptcha.jpg?a"+Math.random() + 10;
-               }); 
+            $(document).ready(function () {
+                $("#CaptchaImage").click(function () {
+                    this.src = "/project/Kaptcha.jpg?a" + Math.random() + 10;
+                });
             });
         </script>
         <script>
-            $(document).ready(function(){
-                $("#submit_log").click(function(){
-                   var stdid=$("#stdid_log").val();
-                   var pwd=$("#password_log").val();
-                   if(stdid===""){
-                       alert("请输入学号!");
-                       return false;
-                   }
-                   if(pwd===""){
-                       alert("请输入密码!");
-                       return false;
-                   }
+            $(document).ready(function () {
+                $("#LoginSubmit").click(function () {
+                    var userId = $("#UserId").val();
+                    var password = $("#Password").val();
+                    if (userId === "") {
+                        alert("请输入学号!");
+                        return false;
+                    }
+                    if (password === "") {
+                        alert("请输入密码!");
+                        return false;
+                    }
                     $.post(
-                        "../../CaptchaCheckServlet",
-                        {captcha:$('#Captcha_log').val()},
-                        function(result){
-                            if(result!=="1"){                               //form submit
-                                alert("验证码错误！");
-                                $("#captchaimg_log").attr('src','/project/Kaptcha.jpg?a'+Math.random() + 10);
-                                $("#password_log").attr('value','');
-                                $("#Captcha_log").attr('value','');
-                                return false;
-                            }else if(result==='1'){
-                                $("#form_log").submit();
+                            "../../CaptchaCheckServlet",
+                            {captcha: $('#Captcha').val()},
+                            function (result) {
+                                if (result !== "1") {                               //form submit
+                                    alert("验证码错误！");
+                                    $("#CaptchaImage").attr('src', '/project/Kaptcha.jpg?a' + Math.random() + 10);
+                                    $("#Password").attr('value', '');
+                                    $("#Captcha").attr('value', '');
+                                    return false;
+                                } else if (result === '1') {
+                                    $("#LoginForm").submit();
+                                }
                             }
-                        }
-                        );
-               return false;                    
+                    );
+                    return false;
                 });
             });
         </script>
     </head>
     <body>
         <div class="container">			
-                <div id="container_demo" >
-                    <a class="hiddenanchor" id="toregister"></a>
-                    <a class="hiddenanchor" id="tologin"></a>
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form action="../../AdminLoginServlet" method="post" id="form_log"> 
-                                <h1>管理员 登录</h1> 
-                                <p> 
-                                    <label for="stdid_log" > 账号 </label>
-                                    <input id="stdid_log" name="stdid_log" type="text" placeholder="请输入账号"/>
-                                </p>
-                                <p> 
-                                    <label for="password_log" > 密码 </label>
-                                    <input id="password_log" name="password_log" type="password" placeholder="请输入密码" /> 
-                                </p>
-                                
-                                <p>
-                                    <label for="Captcha_log">验证码:</label>
-                                    <img src="/project/Kaptcha.jpg" id="captchaimg_log">
-                                    <input type="text" name="Captcha_log" id="Captcha_log" placeholder="请输入验证码！">
-                                </p>
-                                <p class="login button"> 
-                                    <input type="submit" value="Login" id="submit_log"/> 
-								</p>
-                           </form>
-                            
-                        </div>
+            <div id="container_demo" >
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                        <form action="../../LoginServlet" method="post" id="LoginForm"> 
+                            <h1>管理员 登录</h1> 
+                            <p> 
+                                <label for="UserId" > 工号 </label>
+                                <input id="UserId" name="UserId" type="text" placeholder="请输入学号"/>
+                            </p>
+                            <p> 
+                                <label for="Password" > 密码 </label>
+                                <input id="Password" name="Password" type="password" placeholder="请输入密码" /> 
+                            </p>
 
-                        
-						
+                            <p>
+                                <label for="Captcha">验证码:</label>
+                                <img src="/project/Kaptcha.jpg" id="CaptchaImage">
+                                <input type="text" name="Captcha" id="Captcha" placeholder="请输入验证码！">
+                            </p>
+                            <input type="hidden" name="UserType" value="2">
+                            <p class="login button"> 
+                                <input type="submit" value="Login" id="LoginSubmit"/> 
+                            </p>
+                        </form>
+                        <p class="change_link">
+                            学生登录
+                            <a href="../login/login.jsp">切换</a>
+                        </p>
+
                     </div>
-                </div>  
+                </div>
+            </div>  
         </div>
-
-  
-	</body>
-
+    </body>
 </html>

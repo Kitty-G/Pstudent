@@ -128,12 +128,12 @@ public class Activity extends Notice {
             values.add(this.getNoticeTitle());
             values.add(this.getNoticeContent());
             values.add(this.getAdminId());
-            values.add(Convert.EnumToString(this.getNoticeType()));
-            values.add(Convert.EnumToString(this.getNoticeStatus()));
+            values.add(Convert.EnumToIntString(this.getNoticeType()));
+            values.add(Convert.EnumToIntString(this.getNoticeStatus()));
             values.add(String.valueOf(this.getImageCount()));
             values.add(Convert.ConvertDateToString(this.getCreateTime(), Convert.TimeFormat.YYYYMMDDHHMMSS));
-            values.add(Convert.EnumToString(this.activityType));
-            values.add(Convert.EnumToString(this.identityLevel));
+            values.add(Convert.EnumToIntString(this.activityType));
+            values.add(Convert.EnumToIntString(this.identityLevel));
             values.add(String.valueOf(this.limitPeopleNumber));
         } catch (Exception ex) {
             values = null;

@@ -22,7 +22,7 @@ public class CaptchaChecker {
                 return false;
             }
             result = realCode.equals(captcha);
-        } catch (Exception e) {
+        } catch (Exception ex) {
             result = false;
         }
         return result;

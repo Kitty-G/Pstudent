@@ -16,19 +16,21 @@ import java.util.Date;
  */
 public class DefaultValue {
 
+    public static String StudentPassword  = "12345678";
+
     public String AutomaticColumnMapping(SelectField field) throws Exception {
         String defaultValue = null;
-        try{
-            switch (field.getInternalName()) { 
-            case "CreateTime":
-                Date date = new Date();
-                defaultValue = Convert.ConvertDateToString(date, TimeFormat.YYYYMMDDHHMMSS);
-                break;
-            default:
-                throw new EnumInvalidException();
-        }
-        }catch(Exception e){
-            
+        try {
+            switch (field.getInternalName()) {
+                case "CreateTime":
+                    Date date = new Date();
+                    defaultValue = Convert.ConvertDateToString(date, TimeFormat.YYYYMMDDHHMMSS);
+                    break;
+                default:
+                    throw new EnumInvalidException();
+            }
+        } catch (Exception e) {
+
         }
         return defaultValue;
     }
