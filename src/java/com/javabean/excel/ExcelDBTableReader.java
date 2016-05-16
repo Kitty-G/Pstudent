@@ -51,17 +51,19 @@ public class ExcelDBTableReader {
             case Administrator: {
                 tempField = new SelectField("UserId", "管理员账号", FieldLevel.Integral);
                 columnName.add(tempField);
-                tempField = new SelectField("ManageLevel", "管理员级别", FieldLevel.Integral);
+                tempField = new SelectField("Password", "密码", FieldLevel.Automatic);
                 columnName.add(tempField);
                 tempField = new SelectField("Name", "姓名", FieldLevel.Integral);
                 columnName.add(tempField);
+                tempField = new SelectField("Identity", "身份", FieldLevel.Automatic);
+                columnName.add(tempField);
                 tempField = new SelectField("Gender", "性别", FieldLevel.Integral);
+                columnName.add(tempField);
+                tempField = new SelectField("ManageLevel", "管理员级别", FieldLevel.Integral);
                 columnName.add(tempField);
                 tempField = new SelectField("Telephone", "联系电话", FieldLevel.Normal);
                 columnName.add(tempField);
                 tempField = new SelectField("Email", "电子邮箱", FieldLevel.Normal);
-                columnName.add(tempField);
-                tempField = new SelectField("CreateTime", "创建时间", FieldLevel.Automatic);
                 columnName.add(tempField);
                 break;
             }
@@ -81,6 +83,8 @@ public class ExcelDBTableReader {
                 columnName.add(tempField);
                 tempField = new SelectField("DepartmentCode", "管理院系编号", FieldLevel.Integral);
                 columnName.add(tempField);
+                tempField = new SelectField("DepartmentCode", "部门类别", FieldLevel.Integral);
+                columnName.add(tempField);
                 break;
             }
         }
@@ -95,8 +99,8 @@ public class ExcelDBTableReader {
         }
         return internalNameList;
     }
-    
-        public List<String> GetDisplayNameList(List<SelectField> fieldList) {
+
+    public List<String> GetDisplayNameList(List<SelectField> fieldList) {
         List<String> displayNameList;
         displayNameList = new ArrayList();
         for (SelectField field : fieldList) {

@@ -16,7 +16,8 @@ import java.util.Date;
  */
 public class DefaultValue {
 
-    public static String StudentPassword  = "12345678";
+    public static String StudentPassword = "12345678";
+    public static String AdministratorPassword = "dlpuadmin";
 
     public String AutomaticColumnMapping(SelectField field) throws Exception {
         String defaultValue = null;

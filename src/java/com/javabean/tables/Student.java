@@ -74,7 +74,7 @@ public class Student extends User {
         ResultSet rs;
         String sql;
         sql = "SELECT * FROM STUDENT WHERE USERID = ? ";
- sqlOperate = new SQLOperate();
+        sqlOperate = new SQLOperate();
         rs = sqlOperate.Query(sql, userId);
         try {
             student = new Student();

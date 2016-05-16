@@ -70,12 +70,16 @@ public class ExcelDocument {
             Logger.getLogger(ExcelDocument.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-        if (this.excelDocumentType == ExcelDocumentType.XLS) {
-            result = XLSInitialize();
-        } else if (this.excelDocumentType == ExcelDocumentType.XLSX) {
-            result = XLSXInitialize();
-        } else {
-            result = false;
+        switch (this.excelDocumentType) {
+            case XLS:
+                result = XLSInitialize();
+                break;
+            case XLSX:
+                result = XLSXInitialize();
+                break;
+            default:
+                result = false;
+                break;
         }
         return result;
     }
