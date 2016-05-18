@@ -5,8 +5,16 @@
  */
 package com.servlet.student;
 
+import com.javabean.common.Exception.ConvertException;
+import com.javabean.common.User.Gender;
+import com.javabean.common.User.Identity;
+import com.javabean.student.StudentWorker;
+import com.javabean.tools.Convert;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,33 +38,46 @@ public class AddStudentServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddStudentServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AddStudentServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
+            StudentWorker worker;
+            boolean result;
+            String userId;
+            String password;
+            String userName;
+            Identity identity;
+            Gender gender;
+            int grade;
+            String majorCode;
+            int classNo;
+            Date intendedTime;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            userId = request.getParameter("StudentId");
+            password = request.getParameter("Password");
+            userName = request.getParameter("UserName");
+            identity = Identity.User;
+            gender = Gender.values()[Integer.parseInt(request.getParameter("Gender"))];
+            grade = Integer.parseInt(request.getParameter("Grade"));
+            majorCode = request.getParameter("Major");
+            classNo = Integer.parseInt(request.getParameter("Class"));
+            intendedTime = Convert.ConvertStringToDate(request.getParameter("IntendedTime"), Convert.TimeFormat.YYYYMMDD);
+
+            worker = new StudentWorker(userId, password, userName, identity, gender, grade, majorCode, classNo, intendedTime);
+            result = false;
+            if (worker != null) {
+                result = worker.AddStudent();
+            }
+            if (result) {
+
+            } else {
+
+            }
+
+        } catch (ConvertException ex) {
+            Logger.getLogger(AddStudentServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+
+        }
     }
 
     /**

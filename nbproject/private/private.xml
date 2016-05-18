@@ -3,14 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/java/project/src/java/com/javabean/tables/ManagingDepartment.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/tables/Administrator.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/major/MajorWorker.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/tables/Major.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/excel/ExcelDBTableReader.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/administrator/AdministratorWorker.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/excel/ExcelDocument.java</file>
-            <file>file:/D:/java/project/src/java/com/javabean/excel/ExcelWorker.java</file>
+            <file>file:/D:/java/project/src/java/com/javabean/student/StudentWorker.java</file>
+            <file>file:/D:/java/project/src/java/com/javabean/tools/Convert.java</file>
+            <file>file:/D:/java/project/src/java/com/servlet/login/LoginServlet.java</file>
+            <file>file:/D:/java/project/src/java/com/servlet/student/AddStudentServlet.java</file>
         </group>
     </open-files>
 </project-private>
