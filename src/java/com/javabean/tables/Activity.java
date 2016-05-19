@@ -72,7 +72,42 @@ public class Activity extends Notice {
         this.limitPeopleNumber = limitPeopleNumber;
     }
 
-    public Activity GetNewsInfo(String noticeId) {
+    public List<Activity> GetNoticeIndexInfo(int ignoreNumber, int returnNumber) {
+        List<Activity> activityList;
+        ResultSet rs;
+        List<String> queryList;
+        String sql;
+
+        sql = "SELECT NOTICEID,NOTICETITLE,NOTICESTATUS,CREATETIME FROM ? ORDER BY CREATETIME LIMIT ?,?";
+        queryList = new ArrayList();
+        queryList.add("ACTIVITY");
+        queryList.add(String.valueOf(ignoreNumber));
+        queryList.add(String.valueOf(returnNumber));
+        SQLOperate sqlOperate = new SQLOperate();
+
+        activityList = new ArrayList();
+        rs = sqlOperate.Query(sql, queryList);
+        try {
+            Activity activityTemp;
+            while (rs.next()) {
+                try {
+                    activityTemp = new Activity();
+                    activityTemp.setNoticeId(rs.getString("NOTICEID"));
+                    activityTemp.setNoticeTitle(rs.getString("NOTICETITLE"));
+                    activityTemp.setNoticeStatus(NoticeStatus.values()[rs.getInt("NOTICESTATUS")]);
+                    activityTemp.setCreateTime(rs.getTimestamp("CREATETIME"));
+                    activityList.add(activityTemp);
+                } catch (SQLException ex) {
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(News.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        return activityList;
+    }
+
+    public Activity GetActivityInfo(String noticeId) {
         Activity activity;
         ResultSet rs;
         String sql;
@@ -101,7 +136,7 @@ public class Activity extends Notice {
         return activity;
     }
 
-    public boolean AddNewsInfo() {
+    public boolean AddActivityInfo() {
         SQLOperate sqlOperate;
         List<String> values;
         boolean result;

@@ -64,16 +64,15 @@ public class SQLOperate extends ConnectDatabase {
         }
         plus.append("?");
         //insert into ?table values (?,?,?,?);
-        sql.append("insert into ");
-        sql.append(table);
-        sql.append(" values (");
+        sql.append("insert into ? values (");
         sql.append(plus);
         sql.append(");");
-//        System.out.println(sql);
+        System.out.println(sql);
         try {
             prepareStatement = connection.prepareStatement(sql.toString());
+            prepareStatement.setString(1, table);
             for (int i = 0; i < values.size(); i++) {
-                prepareStatement.setString(i + 1, values.get(i));
+                prepareStatement.setString(i + 2, values.get(i));
             }
             result = prepareStatement.executeUpdate();
         } catch (SQLException e) {
@@ -91,7 +90,7 @@ public class SQLOperate extends ConnectDatabase {
         int result;
         if (values.size() > 0 && columns.size() == values.size()) {
             for (int i = 0; i < values.size() - 1; i++) {
-                col.append(columns.get(i) + ",");
+                col.append(columns.get(i)).append(",");
                 plus.append("?,");
             }
         } else {

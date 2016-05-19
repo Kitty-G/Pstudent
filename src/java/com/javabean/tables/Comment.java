@@ -166,7 +166,7 @@ public class Comment {
         return comment;
     }
 
-    public List<Comment> GetCommentInfoActivityId(String activityId) {
+    public List<Comment> GetCommentInfoActivityId(String commentId) {
         SQLOperate sqlOperate;
         List<Comment> commentList;
         ResultSet rs;
@@ -177,15 +177,22 @@ public class Comment {
         commentList = GetCommentData(rs);
         return commentList;
     }
-    
-        public List<Comment> GetCommentInfoActivityId(String activityId,int ignoreNumber,int returnNumber) {
+
+    public List<Comment> GetCommentInfoActivityId(String activityId, int ignoreNumber, int returnNumber) {
         SQLOperate sqlOperate;
         List<Comment> commentList;
         ResultSet rs;
         String sql;
-//        sql = "SELECT * FROM COMMENT WHERE COMMENTID = ? ORDER BY COMMENTNUMBER OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+        List<String> queryList;
+        sql = "SELECT * FROM ? WHERE COMMENTID = ? ORDER BY COMMENTNUMBER LIMIT ?,?";
+        queryList = new ArrayList();
+        queryList.add("COMMENT");
+        queryList.add(activityId);
+        queryList.add(String.valueOf(ignoreNumber));
+        queryList.add(String.valueOf(returnNumber));
+
         sqlOperate = new SQLOperate();
-        rs = sqlOperate.Query(sql, commentId);
+        rs = sqlOperate.Query(sql, queryList);
         commentList = GetCommentData(rs);
         return commentList;
     }

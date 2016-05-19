@@ -35,6 +35,14 @@ public class AdministratorWorker {
         }
     }
 
+    public Login getLogin() {
+        return login;
+    }
+
+    public Administrator getAdministrator() {
+        return administrator;
+    }
+
     public boolean AddAdministrator() {
         //need lock connection
         boolean result;
