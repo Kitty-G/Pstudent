@@ -43,7 +43,7 @@ public class News extends Notice {
                 news.setNoticeId(rs.getString("NOTICEID"));
                 news.setNoticeTitle(rs.getString("NOTICETITLE"));
                 news.setNoticeContent(rs.getString("NOTICECONTENT"));
-                news.setAdminId(rs.getString("ADMINID"));
+                news.setAdminId(rs.getString("ADMINISTRATORID"));
                 news.setNoticeType(NoticeType.values()[rs.getInt("NOTICETYPE")]);
                 news.setNoticeStatus(NoticeStatus.values()[rs.getInt("NOTICESTATUS")]);
                 news.setImageCount(rs.getInt("IMAGECOUNT"));

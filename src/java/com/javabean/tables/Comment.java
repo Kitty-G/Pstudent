@@ -32,7 +32,6 @@ public class Comment {
     private String commentId;
     private String activityId;
     private String userId;
-    private int commentNumber;
     private String commentContent;
     private CommentType commentType;
     private String replyCommentId;
@@ -44,11 +43,10 @@ public class Comment {
 
     }
 
-    public Comment(String commentId, String activityId, String userId, int commentNumber, String commentContent, CommentType commentType, String replyCommentId, CommentStatus commentStatus, boolean anonymous, Date createTime) {
+    public Comment(String commentId, String activityId, String userId, String commentContent, CommentType commentType, String replyCommentId, CommentStatus commentStatus, boolean anonymous, Date createTime) {
         this.commentId = commentId;
         this.activityId = activityId;
         this.userId = userId;
-        this.commentNumber = commentNumber;
         this.commentContent = commentContent;
         this.commentType = commentType;
         this.replyCommentId = replyCommentId;
@@ -79,14 +77,6 @@ public class Comment {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public int getCommentNumber() {
-        return commentNumber;
-    }
-
-    public void setCommentNumber(int commentNumber) {
-        this.commentNumber = commentNumber;
     }
 
     public String getCommentContent() {
@@ -151,7 +141,6 @@ public class Comment {
                 comment.commentId = rs.getString("COMMENTID");
                 comment.activityId = rs.getString("ACTIVITYID");
                 comment.userId = rs.getString("USERID");
-                comment.commentNumber = rs.getInt("COMMENTNUMBER");
                 comment.commentContent = rs.getString("COMMENTCONTENT");
                 comment.commentType = CommentType.values()[rs.getInt("COMMENTTYPE")];
                 comment.replyCommentId = rs.getString("REPLYCOMMENTID");
@@ -171,7 +160,7 @@ public class Comment {
         List<Comment> commentList;
         ResultSet rs;
         String sql;
-        sql = "SELECT * FROM COMMENT WHERE COMMENTID = ? ORDER BY COMMENTNUMBER";
+        sql = "SELECT * FROM COMMENT WHERE COMMENTID = ?";
         sqlOperate = new SQLOperate();
         rs = sqlOperate.Query(sql, commentId);
         commentList = GetCommentData(rs);
@@ -184,7 +173,7 @@ public class Comment {
         ResultSet rs;
         String sql;
         List<String> queryList;
-        sql = "SELECT * FROM ? WHERE COMMENTID = ? ORDER BY COMMENTNUMBER LIMIT ?,?";
+        sql = "SELECT * FROM ? WHERE ACTIVITYID = ? ORDER BY CREATETIME LIMIT ?,?";
         queryList = new ArrayList();
         queryList.add("COMMENT");
         queryList.add(activityId);
@@ -208,7 +197,6 @@ public class Comment {
                     commentTemp.commentId = rs.getString("COMMENTID");
                     commentTemp.activityId = rs.getString("ACTIVITYID");
                     commentTemp.userId = rs.getString("USERID");
-                    commentTemp.commentNumber = rs.getInt("COMMENTNUMBER");
                     commentTemp.commentContent = rs.getString("COMMENTCONTENT");
                     commentTemp.commentType = CommentType.values()[rs.getInt("COMMENTTYPE")];
                     commentTemp.replyCommentId = rs.getString("REPLYCOMMENTID");
@@ -252,7 +240,6 @@ public class Comment {
             values.add(this.commentId);
             values.add(this.activityId);
             values.add(this.userId);
-            values.add(String.valueOf(this.commentNumber));
             values.add(this.commentContent);
             values.add(Convert.EnumToIntString(this.commentType));
             values.add(this.replyCommentId);

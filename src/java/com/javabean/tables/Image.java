@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class Image {
 
-    private String noticeId;
-    private NoticeType noticeType;
     private String imageId;
     private String imageName;
+    private String noticeId;
+    private NoticeType noticeType;
     private String relativePath;
     private Date createTime;
 
@@ -87,10 +87,10 @@ public class Image {
             while (rs.next()) {
                 try {
                     imageTemp = new Image();
-                    imageTemp.noticeId = rs.getString("NOTICEID");
-                    imageTemp.noticeType = NoticeType.values()[rs.getInt("NOTICETYPE")];
                     imageTemp.imageId = rs.getString("IMAGEID");
                     imageTemp.imageName = rs.getString("IMAGENAME");
+                    imageTemp.noticeId = rs.getString("NOTICEID");
+                    imageTemp.noticeType = NoticeType.values()[rs.getInt("NOTICETYPE")];
                     imageTemp.relativePath = rs.getString("RELATIVEPATH");
                     imageTemp.createTime = rs.getTimestamp("CREATETIME");
                     imageList.add(imageTemp);

@@ -39,6 +39,10 @@
         <servlet-name>AddAdministratorServlet</servlet-name>
         <servlet-class>com.servlet.administrator.AddAdministratorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddActivityServlet</servlet-name>
+        <servlet-class>com.servlet.activity.AddActivityServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <url-pattern>/CaptchaCheckServlet</url-pattern>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>AddAdministratorServlet</servlet-name>
         <url-pattern>/AddAdministratorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddActivityServlet</servlet-name>
+        <url-pattern>/AddActivityServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

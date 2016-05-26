@@ -94,8 +94,15 @@ public class Activity extends Notice {
                     activityTemp = new Activity();
                     activityTemp.setNoticeId(rs.getString("NOTICEID"));
                     activityTemp.setNoticeTitle(rs.getString("NOTICETITLE"));
+                    activityTemp.setNoticeContent(rs.getString("NOTICECONTENT"));
+                    activityTemp.setAdminId(rs.getString("ADMINISTRATORID"));
+                    activityTemp.setNoticeType(NoticeType.values()[rs.getInt("NOTICETYPE")]);
                     activityTemp.setNoticeStatus(NoticeStatus.values()[rs.getInt("NOTICESTATUS")]);
+                    activityTemp.setImageCount(rs.getInt("IMAGECOUNT"));
                     activityTemp.setCreateTime(rs.getTimestamp("CREATETIME"));
+                    activityTemp.activityType = ActivityType.values()[rs.getInt("ACTIVITYTYPE")];
+                    activityTemp.identityLevel = IdentityLevel.values()[rs.getInt("IDENTITYLEVEL")];
+                    activityTemp.limitPeopleNumber = rs.getInt("LIMITPEOPLENUMBER");
                     activityList.add(activityTemp);
                 } catch (SQLException ex) {
                 }
