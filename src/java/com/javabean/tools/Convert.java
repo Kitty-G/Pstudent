@@ -20,7 +20,7 @@ import java.util.Date;
 public class Convert {
 
     public enum TimeFormat {
-
+        NumYYYYMMDDHHMMSS,
         YYYYMMDDHHMMSS,
         YYYYMMDD,
         HHMMSS
@@ -63,6 +63,9 @@ public class Convert {
     private static String getTimeFormatString(TimeFormat timeFormat) {
         String format = null;
         switch (timeFormat) {
+            case NumYYYYMMDDHHMMSS:
+                format = "yyyyMMddHHmmss";
+                break;
             case YYYYMMDDHHMMSS:
                 format = "yyyy-MM-dd HH:mm:ss";
                 break;

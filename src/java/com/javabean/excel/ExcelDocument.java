@@ -99,8 +99,8 @@ public class ExcelDocument {
             } catch (IOException ex) {
                 Logger.getLogger(ExcelDocument.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return result;
         }
+        return result;
     }
 
     private boolean XLSXInitialize() {
@@ -116,8 +116,8 @@ public class ExcelDocument {
             } catch (IOException ex) {
                 Logger.getLogger(ExcelDocument.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return result;
         }
+        return result;
     }
 
     public void Close() {
