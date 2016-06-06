@@ -96,7 +96,6 @@ public class Convert {
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
             throw new ConvertException(ConvertException.getMessage(ConvertExceptionType.StringToBit32MD5), ConvertExceptionType.StringToBit32MD5);
         }
-
         return MD5String;
     }
 

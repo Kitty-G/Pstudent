@@ -90,7 +90,7 @@
                         </form>
                         <p class="change_link">
                             管理员登录
-                            <a href="../admin/login.jsp">切换</a>
+                            <a href="../administrator/login.jsp">切换</a>
                         </p>
 
                     </div>

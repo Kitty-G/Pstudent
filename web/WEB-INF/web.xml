@@ -43,6 +43,10 @@
         <servlet-name>AddActivityServlet</servlet-name>
         <servlet-class>com.servlet.activity.AddActivityServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadExcelFileServlet</servlet-name>
+        <servlet-class>com.servlet.batchappend.UploadExcelFileServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaCheckServlet</servlet-name>
         <url-pattern>/CaptchaCheckServlet</url-pattern>
@@ -82,6 +86,10 @@
     <servlet-mapping>
         <servlet-name>AddActivityServlet</servlet-name>
         <url-pattern>/AddActivityServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadExcelFileServlet</servlet-name>
+        <url-pattern>/UploadExcelFileServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

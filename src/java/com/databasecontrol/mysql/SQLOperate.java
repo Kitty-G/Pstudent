@@ -64,15 +64,16 @@ public class SQLOperate extends ConnectDatabase {
         }
         plus.append("?");
         //insert into ?table values (?,?,?,?);
-        sql.append("insert into ? values (");
+        sql.append("insert into ");
+        sql.append(table);
+        sql.append(" values (");
         sql.append(plus);
         sql.append(");");
         System.out.println(sql);
         try {
             prepareStatement = connection.prepareStatement(sql.toString());
-            prepareStatement.setString(1, table);
             for (int i = 0; i < values.size(); i++) {
-                prepareStatement.setString(i + 2, values.get(i));
+                prepareStatement.setString(i + 1, values.get(i));
             }
             result = prepareStatement.executeUpdate();
         } catch (SQLException e) {

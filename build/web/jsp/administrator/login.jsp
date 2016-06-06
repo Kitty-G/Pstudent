@@ -68,9 +68,9 @@
                 <div id="wrapper">
                     <div id="login" class="animate form">
                         <form action="../../LoginServlet" method="post" id="LoginForm"> 
-                            <h1>学生 登录</h1> 
+                            <h1>管理员 登录</h1> 
                             <p> 
-                                <label for="UserId" > 学号 </label>
+                                <label for="UserId" > 工号 </label>
                                 <input id="UserId" name="UserId" type="text" placeholder="请输入学号"/>
                             </p>
                             <p> 
@@ -83,22 +83,19 @@
                                 <img src="/project/Kaptcha.jpg" id="CaptchaImage">
                                 <input type="text" name="Captcha" id="Captcha" placeholder="请输入验证码！">
                             </p>
-                            <input type="hidden" name="UserType" value="1">
+                            <input type="hidden" name="UserType" value="2">
                             <p class="login button"> 
                                 <input type="submit" value="Login" id="LoginSubmit"/> 
                             </p>
                         </form>
                         <p class="change_link">
-                            管理员登录
-                            <a href="../administrator/login.jsp">切换</a>
+                            学生登录
+                            <a href="../login/login.jsp">切换</a>
                         </p>
 
                     </div>
                 </div>
             </div>  
         </div>
-
-
     </body>
-
 </html>
