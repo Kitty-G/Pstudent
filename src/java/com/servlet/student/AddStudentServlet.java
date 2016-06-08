@@ -63,12 +63,9 @@ public class AddStudentServlet extends HttpServlet {
             intendedTime = Convert.ConvertStringToDate(request.getParameter("IntendedTime"), Convert.TimeFormat.YYYYMMDD);
 
             worker = new StudentWorker(userId, password, userName, identity, gender, grade, majorCode, classNo, intendedTime);
-            result = false;
-            if (worker != null) {
-                result = worker.AddStudent();
-            }
+            result = worker.AddStudent();
             if (result) {
-
+                
             } else {
 
             }
