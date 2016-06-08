@@ -3,6 +3,7 @@ package org.apache.jsp.jsp.administrator.Excel;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import com.javabean.tools.SystemInfo;
 
 public final class BatchAppend_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,20 +45,53 @@ public final class BatchAppend_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+
+    String project;
+    project = SystemInfo.ProjectName;
+
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
+      out.write("        <title>批量添加信息</title>\n");
+      out.write("        <script type=\"text/javascript\" src=\"/");
+      out.print(project);
+      out.write("/javascript/lib/jquery-1.8.2.min.js\"></script>\n");
+      out.write("        <script>\n");
+      out.write("            $(document).ready(function () {\n");
+      out.write("                $.post(\n");
+      out.write("                        \"../../CaptchaCheckServlet\",\n");
+      out.write("                        {captcha: $('#Captcha').val()},\n");
+      out.write("                        function (result) {\n");
+      out.write("                            if (result !== \"1\") {                               //form submit\n");
+      out.write("                                alert(\"验证码错误！\");\n");
+      out.write("                                $(\"#CaptchaImage\").attr('src', '/project/Kaptcha.jpg?a' + Math.random() + 10);\n");
+      out.write("                                $(\"#Password\").attr('value', '');\n");
+      out.write("                                $(\"#Captcha\").attr('value', '');\n");
+      out.write("                                return false;\n");
+      out.write("                            } else if (result === '1') {\n");
+      out.write("                                $(\"#LoginForm\").submit();\n");
+      out.write("                            }\n");
+      out.write("                        }\n");
+      out.write("                );\n");
+      out.write("            }\n");
+      out.write("        </script>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div>\n");
-      out.write("            <form id=\"fileupload\" action=\"../../../UploadExcelFileServlet\" method=\"POST\" enctype=\"multipart/form-data\">\n");
+      out.write("            <form id=\"fileupload\" action=\"/");
+      out.print(project);
+      out.write("/UploadExcelFileServlet\" method=\"POST\" enctype=\"multipart/form-data\">\n");
       out.write("                <p><input type=\"file\" name=\"file\"></p>\n");
       out.write("                <p><input type=\"submit\" name=\"submit\" value=\"submit\"></p>\n");
       out.write("            </form>\n");
       out.write("        </div>\n");
-      out.write("    </body>\n");
+      out.write("    \n");
+      out.write("        <iframe src=\"/project/jsp/login/login.jsp\" name=left scrolling=no id=\"left\"></iframe>\n");
+      out.write("    \n");
+      out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

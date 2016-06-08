@@ -5,7 +5,7 @@
             <url>src/java/com/servlet/tools/FileUploadHelper.java</url>
             <bookmark id="1">
                 <name/>
-                <line>80</line>
+                <line>137</line>
                 <key/>
             </bookmark>
         </file>
@@ -14,14 +14,16 @@
         <group>
             <file>file:/D:/java/project/src/java/com/servlet/batchappend/UploadExcelFileServlet.java</file>
             <file>file:/D:/java/project/web/jsp/administrator/Excel/BatchAppend.jsp</file>
-            <file>file:/D:/java/project/web/jsp/login/login.jsp</file>
-            <file>file:/D:/java/project/src/java/com/servlet/tools/FileUploadHelper.java</file>
+            <file>file:/D:/java/project/src/java/com/databasecontrol/mysql/SQLOperate.java</file>
+            <file>file:/D:/java/project/src/java/com/servlet/login/LoginServlet.java</file>
+            <file>file:/D:/java/project/web/home.jsp</file>
             <file>file:/D:/java/project/src/java/com/javabean/tables/News.java</file>
+            <file>file:/D:/java/project/src/java/com/javabean/tables/Major.java</file>
+            <file>file:/D:/java/project/src/java/com/javabean/batchappend/BatchAppendWorker.java</file>
             <file>file:/D:/java/project/src/java/com/javabean/tables/Image.java</file>
             <file>file:/D:/java/project/src/java/com/databasecontrol/mysql/Tables.sql</file>
             <file>file:/D:/java/project/src/java/com/javabean/tools/SystemInfo.java</file>
             <file>file:/D:/java/project/src/java/com/javabean/tools/FileHelper.java</file>
-            <file>file:/D:/java/project/web/jsp/administrator/login.jsp</file>
         </group>
     </open-files>
 </project-private>

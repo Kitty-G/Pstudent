@@ -4,10 +4,15 @@
     Author     : zxli
 --%>
 
+<%@page import="com.javabean.tools.SystemInfo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.javabean.tables.Major"%>
 <%@page import="java.util.Calendar"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String project;
+    project = SystemInfo.ProjectName;
+%>
 <%
     Calendar calendar = Calendar.getInstance();
     int year = calendar.get(Calendar.YEAR);
@@ -25,7 +30,7 @@
     </head>
     <body>
         <div>
-            <form>
+            <form action="/<%=project%>/AddStudentServlet" method="POST">
             <table>
                 <thead>添加学生用户信息</thead>
                 <tr>
@@ -104,7 +109,7 @@
                         <input type="text" name="IntendedTime">
                     </td>
                 </tr>
-                <tfoot><input type="submit" value="提交"></tfoot>
+                <tr><td><input type="submit" value="提交"></td></tr>
             </table>
                 </form>
         </div>

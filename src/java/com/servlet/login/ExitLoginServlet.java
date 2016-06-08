@@ -4,6 +4,7 @@
  */
 package com.servlet.login;
 
+import com.javabean.tools.SystemInfo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class ExitLoginServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             session.invalidate();
-            response.sendRedirect("/project/jsp/login/login.jsp");
+            response.sendRedirect("/"+SystemInfo.ProjectName+"/home.jsp");
         } finally {            
             out.close();
         }

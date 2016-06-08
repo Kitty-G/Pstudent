@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -40,15 +39,70 @@ public class FileUploadHelper {
     private long totalSize;
     private int[] fileResult;
     private String relativePath;
+    private List<String> fileNameList;
 
-    private static final String tempFilePath = "TempFile";
+    private static final String unshownUploadFilePath;
+    private static final String tempFilePath;
     private ServletFileUpload servletFileUpload;
+
+    static {
+        unshownUploadFilePath = "WEB-INF" + File.separator + "resource" + File.separator + "uploadfile";
+        tempFilePath = unshownUploadFilePath + File.separator + "tempfile";
+    }
 
     public FileUploadHelper(HttpServletRequest servletRequest, SupportFunction supportFunction, long singleFileMaxSize, long limitedSize) {
         this.servletRequest = servletRequest;
         this.supportFunction = supportFunction;
         this.singleFileMaxSize = singleFileMaxSize;
         this.limitedSize = limitedSize;
+    }
+
+    public SupportFunction getSupportFunction() {
+        return supportFunction;
+    }
+
+    public int getFileCount() {
+        return fileCount;
+    }
+
+    public List<Integer> getValidItemNumberList() {
+        return validItemNumberList;
+    }
+
+    public long getSingleFileMaxSize() {
+        return singleFileMaxSize;
+    }
+
+    public long getLimitedSize() {
+        return limitedSize;
+    }
+
+    public long[] getSize() {
+        return size;
+    }
+
+    public long getTotalSize() {
+        return totalSize;
+    }
+
+    public int[] getFileResult() {
+        return fileResult;
+    }
+
+    public String getRelativePath() {
+        return relativePath;
+    }
+
+    public List<String> getFileNameList() {
+        return fileNameList;
+    }
+
+    public static String getUnshownUploadFilePath() {
+        return unshownUploadFilePath;
+    }
+
+    public static String getTempFilePath() {
+        return tempFilePath;
     }
 
     public boolean Initialize() {
@@ -59,9 +113,12 @@ public class FileUploadHelper {
         DiskFileItemFactory diskFileItemFactory;
         ServletFileUpload fileUpload;
         try {
+            tempRealPath = SystemInfo.ProjectRealPath + File.separator + tempFilePath;
+            if (!FileHelper.CheckAndCreateDirectory(tempRealPath)) {
+//                log
+                return false;
+            }
             this.relativePath = MappingRelativePath();
-//            tempRealPath = SystemInfo.GetServicePath(this.servletRequest)+ File.separator + tempFilePath;
-            tempRealPath = "D:\\java\\project\\build\\web";
             System.out.println(tempRealPath);
             repository = new File(tempRealPath);
             sizeThreshold = 1024 * 6;
@@ -95,25 +152,26 @@ public class FileUploadHelper {
             this.validItemNumberList = GetFileItemNumber(fileItemList);
             this.fileCount = this.validItemNumberList.size();
             this.fileResult = new int[this.fileCount];
+            this.fileNameList = new ArrayList();
             if (!CheckAndGetFilesSize(fileItemList)) {
                 //out of all files max size
                 return -2;
             }
             i = 0;
-            for (int temp : validItemNumberList) {
+            for (int temp : this.validItemNumberList) {
                 FileItem fileItem;
                 try {
                     fileItem = fileItemList.get(temp);
-                    if (size[i] > this.singleFileMaxSize) {
+                    if (this.size[i] > this.singleFileMaxSize) {
                         //out of single file size limit
-                        fileResult[i] = -2;
+                        this.fileResult[i] = -2;
                         continue;
                     }
-                    fileResult[i] = UploadFile(fileItem);
+                    this.fileResult[i] = UploadFile(fileItem);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                     //log
-                    fileResult[i] = -1;
+                    this.fileResult[i] = -1;
                 } finally {
                     i++;
                 }
@@ -134,6 +192,9 @@ public class FileUploadHelper {
         FileHelper fileHelper;
         fileHelper = new FileHelper(this.relativePath, fileItem);
         result = fileHelper.SaveFile() ? 0 : -1;
+        if (result == 0) {
+            this.fileNameList.add(fileHelper.getInternalName());
+        }
         return result;
     }
 
@@ -160,7 +221,7 @@ public class FileUploadHelper {
                 path = "";
                 break;
             case BatchAppend:
-                path = "ExcelFile";
+                path = unshownUploadFilePath + File.separator + "ExcelFile";
                 break;
             default:
                 path = null;

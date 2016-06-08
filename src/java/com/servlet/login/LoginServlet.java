@@ -7,7 +7,9 @@ package com.servlet.login;
 
 import com.javabean.common.User.Identity;
 import com.javabean.login.LoginWorker;
+import com.javabean.tables.Login;
 import com.javabean.tools.CaptchaChecker;
+import com.javabean.tools.Convert;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -44,6 +46,7 @@ public class LoginServlet extends HttpServlet {
             Identity identity;
             CaptchaChecker captchaChecker;
             LoginWorker loginWorker;
+            Login login;
 
             session = request.getSession();
             userId = request.getParameter("UserId");
@@ -66,7 +69,12 @@ public class LoginServlet extends HttpServlet {
             if (loginWorker.LoginChecker()) {
                 switch (loginWorker.getLogin().getIdentity()) {
                     case User:
-                        out.print("<script>alert('bingo');</script>");
+
+                        login = loginWorker.getLogin();
+                        session.setAttribute("userid", login.getUserId());
+                        session.setAttribute("username", login.getUserName());
+                        session.setAttribute("identity", Convert.EnumToIntString(login.getIdentity()));
+                        response.sendRedirect("/project/home.jsp");
                         break;
                     case Administrator:
                         //Administrator UI

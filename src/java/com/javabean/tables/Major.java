@@ -115,6 +115,58 @@ public class Major {
         return majorList;
     }
 
+    public List<Major> GetAllAcademyCodeAndName() {
+        List<Major> majorList;
+        SQLOperate sqlOperate;
+        ResultSet rs;
+        String sql;
+        sql = "SELECT DISTINCT ACADEMYCODE,ACADEMYNAME FROM MAJOR";
+        sqlOperate = new SQLOperate();
+        rs = sqlOperate.Query(sql);
+        majorList = new ArrayList();
+        try {
+            while (rs.next()) {
+                try {
+                    Major majorTemp = new Major();
+                    majorTemp.academyCode = rs.getString("ACADEMYCODE");
+                    majorTemp.academyName = rs.getString("ACADEMYNAME");
+                    majorList.add(majorTemp);
+                } catch (Exception ex) {
+                }
+            }
+        } catch (Exception ex) {
+            //log
+            majorList = null;
+        }
+        return majorList;
+    }
+
+    public List<Major> GetAllMajorCodeAndName() {
+        List<Major> majorList;
+        SQLOperate sqlOperate;
+        ResultSet rs;
+        String sql;
+        sql = "SELECT MAJORCODE,MAJORNAME FROM MAJOR";
+        sqlOperate = new SQLOperate();
+        rs = sqlOperate.Query(sql);
+        majorList = new ArrayList();
+        try {
+            while (rs.next()) {
+                try {
+                    Major majorTemp = new Major();
+                    majorTemp.majorCode = rs.getString("MAJORCODE");
+                    majorTemp.majorName = rs.getString("MAJORNAME");
+                    majorList.add(majorTemp);
+                } catch (Exception ex) {
+                }
+            }
+        } catch (Exception ex) {
+            //log
+            majorList = null;
+        }
+        return majorList;
+    }
+
     public boolean AddMajorInfo() {
         SQLOperate sqlOperate;
         List<String> values;

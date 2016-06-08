@@ -1,0 +1,26 @@
+SMAP
+AddStudentInfo_jsp.java
+JSP
+*S JSP
+*F
++ 0 AddStudentInfo.jsp
+jsp/administrator/studentmanager/AddStudentInfo.jsp
+*L
+5,11:48
+15:59
+17,8:61
+24,9:69
+33:78,3
+34,28:81
+62:109,5
+63,6:114,6
+69,8:150
+77:158,3
+78:161,6
+79:167,3
+80,7:170
+87:177,3
+88:180,6
+89:186,3
+90,29:189
+*E

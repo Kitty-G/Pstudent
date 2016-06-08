@@ -4,6 +4,7 @@
     Author     : KittyG
 --%>
 
+<%@page import="com.javabean.common.User.Identity"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,15 +18,19 @@
     </head>
     <body>
         <%
-            String stdid;
-            String user;
-            Integer power;
             String login_href;
             String login_text;
-            stdid = (String) session.getAttribute("stdid");
+            String userid;
+            String user;
+            Identity identity;
+            String identityString;
+            userid = (String) session.getAttribute("userid");
             user = (String) session.getAttribute("username");
-            power = (Integer) session.getAttribute("power");
-            if (power == null) {
+            identityString = (String) session.getAttribute("identity");
+            identityString = null != identityString ? identityString : "0";
+            identity = Identity.values()[Integer.parseInt(identityString)];
+
+            if (identity == Identity.Visitor) {
                 user = "游客";
             }
             if (user.length() > 10) {
@@ -35,7 +40,7 @@
         <div class="head">
             <div class="nav1">
                 <ul class="menu">
-                    <li><a href="index.jsp"><span>网站首页</span></a></li>
+                    <li><a href="home.jsp"><span>网站首页</span></a></li>
                     <li><a href='/demo/2/about/' ><span>通知公告</span></a></li>
                     <li><a href='/demo/2/case/' ><span>活动论坛</span></a></li>
                     <li><a href='/demo/2/demo/2/services/'><span>项目申请</span></a></li>
@@ -45,7 +50,7 @@
                 <ul class="menu">
                     <li><a href="/project/jsp/std_info/detail.jsp"><span>你好,<%=user%></span></a></li>
                         <%
-                            if (power == null || power.intValue() <= 0) {
+                            if (identity == Identity.Visitor) {
                                 login_href = "/project/jsp/login/login.jsp";
                                 login_text = "用户登录";
                             } else {

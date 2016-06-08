@@ -65,9 +65,9 @@ public class AddStudentServlet extends HttpServlet {
             worker = new StudentWorker(userId, password, userName, identity, gender, grade, majorCode, classNo, intendedTime);
             result = worker.AddStudent();
             if (result) {
-                
+                out.print("<script>alert('添加成功！')</script>");
             } else {
-
+                out.print("<script>alert('添加失败！')</script>");
             }
 
         } catch (ConvertException ex) {

@@ -5,7 +5,6 @@
  */
 package com.servlet.batchappend;
 
-import com.javabean.tools.SystemInfo;
 import com.servlet.tools.FileUploadHelper;
 import com.servlet.tools.FileUploadHelper.SupportFunction;
 import java.io.IOException;
@@ -43,6 +42,9 @@ public class UploadExcelFileServlet extends HttpServlet {
             }
             result = helper.UploadFiles();
             System.out.println(result);
+            for(String temp:helper.getFileNameList()){
+                System.out.println(temp);
+            }
         } catch (Exception ex) {
                 ex.printStackTrace();
                 System.out.println();

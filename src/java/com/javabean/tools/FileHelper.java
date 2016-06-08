@@ -30,25 +30,25 @@ public class FileHelper {
     private String internalName;
     private String extensionName;
     private long size;
-    private String relativePath;
+    private String relativeDirectoryPath;
+    private String relativeFilePath;
     private String realPath;
     private FileType fileType;
     private FileItem fileItem;
 
-    public FileHelper(String relativePath, FileItem fileItem) {
+    public FileHelper(String relativeDirectoryPath, FileItem fileItem) {
         try {
             this.internalName = SystemInfo.GetUniqueId();
         } catch (Exception ex) {
             Logger.getLogger(FileHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.relativePath = relativePath;
+        this.relativeDirectoryPath = relativeDirectoryPath;
         this.fileItem = fileItem;
     }
 
-    public FileHelper(String displayName, String internalName, String relativePath, FileItem fileItem) {
+    public FileHelper(String displayName , String relativeDirectoryPath, FileItem fileItem) {
         this.displayName = displayName;
-        this.internalName = internalName;
-        this.relativePath = relativePath;
+        this.relativeDirectoryPath = relativeDirectoryPath;
         this.fileItem = fileItem;
     }
 
@@ -68,8 +68,8 @@ public class FileHelper {
         return size;
     }
 
-    public String getRelativePath() {
-        return relativePath;
+    public String getRelativeFilePath() {
+        return relativeFilePath;
     }
 
     public String getRealPath() {
@@ -84,11 +84,25 @@ public class FileHelper {
         return fileItem;
     }
 
+    public static boolean CheckAndCreateDirectory(String realDirectoryPath) {
+        boolean result;
+        File directory = new File(realDirectoryPath);
+        if (directory.exists()) {
+            result = true;
+        } else {
+            result = directory.mkdirs();
+            if (!result) {
+                //log can't create directory
+                result = false;
+            }
+        }
+        return result;
+    }
+
     public boolean SaveFile() throws Exception {
         boolean result;
         String fileName;
         String realDirectoryPath;
-        File directory;
         File file;
 
         if (fileItem == null) {
@@ -112,18 +126,14 @@ public class FileHelper {
         } else {
             this.internalName += "." + fileType.toString().toLowerCase();
         }
-        realDirectoryPath = "D:" + File.separator + "test" + File.separator + this.relativePath;
+        realDirectoryPath = SystemInfo.ProjectRealPath + File.separator + this.relativeDirectoryPath;
         this.realPath = realDirectoryPath + File.separator + this.internalName;
-
+        this.relativeFilePath = this.relativeDirectoryPath + File.separator+this.internalName;
         //log
         try {
-            directory = new File(realDirectoryPath);
-            if (!directory.exists()) {
-                result = directory.mkdirs();
-                if (!result) {
-                    //log can't create directory
-                    return false;
-                }
+            result = CheckAndCreateDirectory(realDirectoryPath);
+            if (!result) {
+                return false;
             }
 
             file = new File(realPath);
