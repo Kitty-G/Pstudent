@@ -5,6 +5,9 @@
  */
 package com.servlet.batchappend;
 
+import com.javabean.tools.SystemInfo;
+import com.servlet.tools.FileUploadHelper;
+import com.servlet.tools.FileUploadHelper.SupportFunction;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -30,22 +33,23 @@ public class UploadExcelFileServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("utf-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UploadExcelFileServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UploadExcelFileServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            int result;
+            FileUploadHelper helper = new FileUploadHelper(request, SupportFunction.BatchAppend, 1024 * 1024 * 5, 1024 * 1024 * 5);
+            if (!helper.Initialize()) {
+                response.sendError(500);
+                return;
+            }
+            result = helper.UploadFiles();
+            System.out.println(result);
+        } catch (Exception ex) {
+                ex.printStackTrace();
+                System.out.println();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-
     /**
      * Handles the HTTP <code>POST</code> method.
      *

@@ -26,7 +26,8 @@ public class FileUploadHelper {
 
     public enum SupportFunction {
         News,
-        Activity
+        Activity,
+        BatchAppend
     }
 
     private final HttpServletRequest servletRequest;
@@ -59,7 +60,9 @@ public class FileUploadHelper {
         ServletFileUpload fileUpload;
         try {
             this.relativePath = MappingRelativePath();
-            tempRealPath = SystemInfo.GetBasePath() + File.separator + tempFilePath;
+//            tempRealPath = SystemInfo.GetServicePath(this.servletRequest)+ File.separator + tempFilePath;
+            tempRealPath = "D:\\java\\project\\build\\web";
+            System.out.println(tempRealPath);
             repository = new File(tempRealPath);
             sizeThreshold = 1024 * 6;
             diskFileItemFactory = new DiskFileItemFactory();
@@ -103,11 +106,12 @@ public class FileUploadHelper {
                     fileItem = fileItemList.get(temp);
                     if (size[i] > this.singleFileMaxSize) {
                         //out of single file size limit
-                        fileResult[i]=-2;
+                        fileResult[i] = -2;
                         continue;
                     }
                     fileResult[i] = UploadFile(fileItem);
                 } catch (Exception ex) {
+                    ex.printStackTrace();
                     //log
                     fileResult[i] = -1;
                 } finally {
@@ -115,7 +119,7 @@ public class FileUploadHelper {
                 }
             }
             result = 0;
-        } catch (FileUploadException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(FileUploadHelper.class.getName()).log(Level.SEVERE, null, ex);
             fileResult = null;
             this.size = null;
@@ -154,6 +158,9 @@ public class FileUploadHelper {
                 break;
             case Activity:
                 path = "";
+                break;
+            case BatchAppend:
+                path = "ExcelFile";
                 break;
             default:
                 path = null;

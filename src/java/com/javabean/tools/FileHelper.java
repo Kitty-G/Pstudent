@@ -37,7 +37,7 @@ public class FileHelper {
 
     public FileHelper(String relativePath, FileItem fileItem) {
         try {
-            this.internalName=SystemInfo.GetUniqueId();
+            this.internalName = SystemInfo.GetUniqueId();
         } catch (Exception ex) {
             Logger.getLogger(FileHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -112,7 +112,7 @@ public class FileHelper {
         } else {
             this.internalName += "." + fileType.toString().toLowerCase();
         }
-        realDirectoryPath = SystemInfo.GetBasePath() + File.separator + this.relativePath;
+        realDirectoryPath = "D:" + File.separator + "test" + File.separator + this.relativePath;
         this.realPath = realDirectoryPath + File.separator + this.internalName;
 
         //log

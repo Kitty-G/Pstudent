@@ -52,12 +52,9 @@ public final class BatchAppend_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div>\n");
-      out.write("            <form id=\"fileupload\" action=\"\" method=\"POST\" enctype=\"multipart/form-data\">\n");
-      out.write("                <p>\n");
-      out.write("                    XLS:  <input type=\"radio\" name=\"ExcelType\" value=\"XLS\" checked=\"checked\">\n");
-      out.write("                    XLSX: <input type=\"radio\" name=\"ExcelType\" value=\"XLSX\">\n");
-      out.write("                </p>\n");
+      out.write("            <form id=\"fileupload\" action=\"../../../UploadExcelFileServlet\" method=\"POST\" enctype=\"multipart/form-data\">\n");
       out.write("                <p><input type=\"file\" name=\"file\"></p>\n");
+      out.write("                <p><input type=\"submit\" name=\"submit\" value=\"submit\"></p>\n");
       out.write("            </form>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");

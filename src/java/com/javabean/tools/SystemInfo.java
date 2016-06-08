@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author zxli
  */
 public class SystemInfo {
-
     public static String GetUniqueId() throws Exception {
         String uniqueId;
         Date date = new Date();
@@ -28,6 +28,10 @@ public class SystemInfo {
         String basePath;
         basePath = System.getProperty("user.dir");
         return basePath;
+    }
+    
+    public static String GetServicePath(HttpServletRequest request) {
+        return request.getSession().getServletContext().getRealPath("/");
     }
 
     public static void main(String[] args) {

@@ -13,12 +13,9 @@
     </head>
     <body>
         <div>
-            <form id="fileupload" action="" method="POST" enctype="multipart/form-data">
-                <p>
-                    XLS:  <input type="radio" name="ExcelType" value="XLS" checked="checked">
-                    XLSX: <input type="radio" name="ExcelType" value="XLSX">
-                </p>
-                <p><input type="file" name="file" multiple></p>
+            <form id="fileupload" action="../../../UploadExcelFileServlet" method="POST" enctype="multipart/form-data">
+                <p><input type="file" name="file"></p>
+                <p><input type="submit" name="submit" value="submit"></p>
             </form>
         </div>
     </body>
